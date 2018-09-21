@@ -1,0 +1,17 @@
+
+.nav-link{
+    color: black;
+}
+
+a{
+    text-decoration: none!important;
+    color: #000!important;
+    font-family: 'Karla', sans-serif!important;
+}
+.nav-link{
+    cursor: pointer!important;
+}
+.card.main
+{
+    border: none!important;
+}

@@ -1,0 +1,136 @@
+.img-fluid.toppers
+{
+    max-width: 50% !important;
+    margin-top: 30px;
+}
+.img-fluid.others
+{
+    max-width: 20% !important;
+}
+.img-fluid.view
+{
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+.cardTitle
+{
+    text-align: center;
+    text-transform: uppercase;
+}
+.hr
+{
+    width: 40%;
+    border-width: 8px;
+    border-color: #4297d0;
+}
+.hr.view
+{
+    width: 20%;
+    border-width: 8px;
+    border-color: #4297d0;
+}
+.cardPoint
+{
+    font-weight: bold;
+    font-size: 140%;
+}
+.buttonView
+{
+    color: #4297d0!important;
+    text-decoration: none!important;
+}
+.otherRow
+{
+    margin-top: 30px;
+
+}
+.th {
+vertical-align: middle!important;
+}
+.td, .th {
+border: none!important;
+    text-align: left;
+    vertical-align: middle!important;
+}
+tr
+{
+    background-color: white!important;
+    border-bottom: 1px solid #f3f3f3!important;
+}
+.row
+{
+    background-color: #f3f3f3;
+
+}
+.cardNumber
+{
+    text-align: center;
+}
+.sizeClass
+{
+    background-color: white!important;
+    padding: 30px;
+
+}
+.buttonTags
+{
+    background-color: #f3f3f3!important;
+    margin: 10px;
+    color: #4297d0!important;
+}
+.Social
+{
+    background-color: transparent!important;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+#custom-search-input{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 23px;
+}
+.search
+{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+h5
+{
+    margin-top: 10px;
+    text-align: left;
+}
+.teamId
+{
+    font-size: 70%;
+}
+
+.row
+{
+    font-family: 'Karla', sans-serif;
+}
