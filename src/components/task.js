@@ -76,7 +76,7 @@ class Tasks extends Component {
                         {/*</Alert> : ''}*/}
                       <Alert color="success">
                        Results are out :)
-                        </Alert> 
+                        </Alert>
 
                         <span className="cd-date">Sep 13</span>
                     </div>
@@ -112,19 +112,51 @@ class Tasks extends Component {
 
 
 
+                            <Alert color="success">
+                                Results are out :)
+                            </Alert>
 
-
-                           <br /><br /><b>** The upload button would show up at 4pm on September 20th. All the best **</b>
-                            {this.state.task.indexOf(2) > -1 ?   <Alert color="success">
-                            Submitted !! :) will get back soon
-                            </Alert> : ''}
-                            {this.props.user.Reducer.user === null || this.state.task.indexOf(2) > -1 || this.state.btnState ? '' : <Button color="success" className='float-right' size='sm' onClick={this.changeStateTrue}> Submit </Button>}
-                            {this.props.user.Reducer.user !== null && this.state.task.indexOf(2) < 0 && this.state.btnState ? <Form> <FormElement name="github" inputType="text"  fullName="Give the github url" action={this.onChange} /> </Form> : ''}
-                            {this.props.user.Reducer.user !== null && this.state.task.indexOf(2) < 0 && this.state.btnState ? <Button color="success" className='float-right' onClick={this.submitTask}> Submit </Button>: ''}
-                            {this.props.user.Reducer.user !== null && this.state.task.indexOf(2) < 0 && this.state.btnState ? <Button color="error" className='float-right margin' onClick={this.changeStateFalse}> Cancel </Button>: ''}
+                           {/*<br /><br /><b>** The upload button would show up at 4pm on September 20th. All the best **</b>*/}
+                            {/*{this.state.task.indexOf(2) > -1 ?   <Alert color="success">*/}
+                            {/*Submitted !! :) will get back soon*/}
+                            {/*</Alert> : ''}*/}
+                            {/*{this.props.user.Reducer.user === null || this.state.task.indexOf(2) > -1 || this.state.btnState ? '' : <Button color="success" className='float-right' size='sm' onClick={this.changeStateTrue}> Submit </Button>}*/}
+                            {/*{this.props.user.Reducer.user !== null && this.state.task.indexOf(2) < 0 && this.state.btnState ? <Form> <FormElement name="github" inputType="text"  fullName="Give the github url" action={this.onChange} /> </Form> : ''}*/}
+                            {/*{this.props.user.Reducer.user !== null && this.state.task.indexOf(2) < 0 && this.state.btnState ? <Button color="success" className='float-right' onClick={this.submitTask}> Submit </Button>: ''}*/}
+                            {/*{this.props.user.Reducer.user !== null && this.state.task.indexOf(2) < 0 && this.state.btnState ? <Button color="error" className='float-right margin' onClick={this.changeStateFalse}> Cancel </Button>: ''}*/}
 
                         </p>
                         <span className="cd-date">Sep 20</span>
+                    </div>
+                </div>
+                <div className="cd-timeline-block">
+                    <div className="cd-timeline-img cd-picture">
+                        <img src={task}
+                             alt="Picture"/>
+                    </div>
+                    <div className="cd-timeline-content">
+                        <h2 className='heading'> React Start </h2>
+                        <p>
+                            There are 5 stages in this task.<br />
+                            1. Create a hello world react app.<br />
+                            2. Create a same UI of leaderboard in react app and tell similarities and dissimilarities keeping both side by side.<br />
+                            3. Add anyone feature you feel to the existing webstacks react app.<br />
+                            4. Make a pull request to the webstacks repository with the added feature.<br />
+                            5. Create a unique qr for every person and show it in both profile and view details.<br /><br />
+
+                            Refer : <br />
+                            1. <a href='https://medium.com/@prmeister89/getting-started-with-react-8d67e2adc4df'>Getting started with react</a><br />
+                            2. <a href='https://hackernoon.com/getting-started-with-react-redux-1baae4dcb99b'>Getting started with react and redux</a><br />
+                            3. <a href='https://www.codementor.io/vijayst/using-firebase-with-redux-for-building-a-react-app-du1086puw'>Getting started with react, redux and firebase</a><br />
+
+                            <b>** The upload button would show up at 4pm on October 8th. All the best **</b><br />
+                        </p>
+                        {/*{this.state.task.indexOf(1) > -1 ?   <Alert color="success">*/}
+                        {/*Submitted !! :) will get back soon*/}
+                        {/*</Alert> : ''}*/}
+
+
+                        <span className="cd-date">Oct 5</span>
                     </div>
                 </div>
             </section>
