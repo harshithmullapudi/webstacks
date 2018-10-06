@@ -1,0 +1,24 @@
+.Question
+{
+    border-left: 3px solid gray;
+}
+h3
+{
+    text-align: left;
+}
+p{
+    margin-top: 40px;
+}
+small
+{
+    text-align: right;
+}
+.pName
+{
+    text-align: right;
+}
+.noComments
+{
+    text-align: center;
+    margin: 40px;
+}

@@ -1,0 +1,26 @@
+h2
+{
+    font-family: 'Karla', sans-serif;
+
+}
+.form-inline
+{
+    margin-right: 10px;
+}
+
+.containerType
+{
+    padding: 3%;
+    background-color: #f8f9fa;
+}
+.bitBottom
+{
+    margin: 20px;
+}
+
+form{
+    margin-bottom: 20px;
+}
+a{
+    cursor: pointer;
+}

@@ -18,6 +18,7 @@ import LoginView from "./components/login";
 import Notifications from 'react-notify-toast';
 import {signOut} from './store'
 import ProfileView from "./components/afterLogin/profileView";
+import QuestionsView from "./components/questions/questionPage";
 class App extends Component {
     constructor(props) {
         super(props);
@@ -48,6 +49,9 @@ class App extends Component {
                         <Link class='navbar-brand' href="/" to="/" > <img src={logo}  width="200" height="auto" alt=""/></Link>
                     <Nav className="ml-auto" navbar>
                         <NavItem >
+                            <Link class="nav-link" to='/leaderboard'>Leaderboard</Link>
+                        </NavItem>
+                        <NavItem >
                             <Link class="nav-link" to='/tasks'>Tasks</Link>
                         </NavItem>
                         { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/login'>Login</Link> </NavItem>  : ''}
@@ -57,11 +61,12 @@ class App extends Component {
                     </Nav>
                 </Navbar>
                     <div className="card main">
-                        <Route exact path="/" component={ListView} />
+                        <Route exact path="/" component={QuestionsView} />
                         <Route exact path="/add" component={AddView} />
                         <Route exact path="/tasks" component={Tasks} />
                         <Route exact path="/login" component={LoginView} />
                         <Route exact path="/profile" component={ProfileView} />
+                        <Route exact path="/leaderboard" component={ListView} />
                     </div>
             </main>
         </Router>

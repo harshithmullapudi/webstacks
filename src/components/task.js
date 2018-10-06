@@ -38,7 +38,6 @@ class Tasks extends Component {
     }
 
     render() {
-        console.log(this.props.user.Reducer.user)
         if(this.props.user.Reducer.user && this.props.user.Reducer.user.answer)
         {
             console.log("entered");
