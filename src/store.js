@@ -93,10 +93,14 @@ export function addComentDB(question, comment) {
 export function getQuestions() {
     return dispatch => {
         database.ref(`questions`).on('value', snap => {
-            let values = Object.keys(snap.val()).map(k => {
-               return snap.val()[k];
-            });
-            setTimeout(() => {dispatch(getQuestionsDispatch(values))}, 1);
+            if(snap.val()) {
+                let values = Object.keys(snap.val()).map(k => {
+                    return snap.val()[k];
+                });
+                setTimeout(() => {
+                    dispatch(getQuestionsDispatch(values))
+                }, 1);
+            }
         })
     }
 }

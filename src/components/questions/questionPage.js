@@ -122,6 +122,12 @@ class QuestionsView extends Component {
                 </a>)
             })
         }
+        if(questions.length === 0)
+        {
+            questions.push(
+                <h5 className='noComments'> No questions posted </h5>
+            )
+        }
         return (
             <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -136,7 +142,7 @@ class QuestionsView extends Component {
                     <ul className="navbar-nav mr-auto">
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
-                        {this.props.questions.Reducer.user ? <button className="btn btn-success my-2 my-sm-0" onClick={this.addQuestion}>Add question</button> : <Link class="nav-link" to='/login'>  <Button className="btn btn-success my-2 my-sm-0">Login</Button></Link> }
+                        {this.props.questions.Reducer.user ? <button className="btn btn-success my-2 my-sm-0" onClick={this.addQuestion}>Add question</button> : <Link class="nav-link" to='/login'>  <Button className="btn btn-success my-2 my-sm-0">Login / Add question</Button></Link> }
                     </form>
                     <form className="form-inline my-2 my-lg-0">
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value={this.state.search} onChange={this.onChangeSearch} />
