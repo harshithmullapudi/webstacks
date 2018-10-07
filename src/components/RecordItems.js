@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import {connect} from 'react-redux';
 import {
     Card, CardText, CardBody,
@@ -14,7 +14,7 @@ import mail from '../assets/mail.svg'
 import {Container, Row, Col, Table, Button} from 'reactstrap';
 import {getRecordsThunk} from "../store";
 import {FaSearch} from 'react-icons/fa';
-import QrCode from 'qrcode.react';
+var QRCode = require('qrcode.react'); //For QR Code component taken from https://github.com/zpao/qrcode.react
 function importAll(r) {
     let images = {};
     r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
@@ -24,7 +24,6 @@ function importAll(r) {
 const boys = importAll(require.context('../assets/boys', false, /\.(png|jpe?g|svg)$/));
 const girls = importAll(require.context('../assets/girls', false, /\.(png|jpe?g|svg)$/));
 
-
 class ListRecord extends React.Component {
     constructor(props) {
         super();
@@ -33,10 +32,8 @@ class ListRecord extends React.Component {
             position: null,
             person: {},
             size: 12
-            
         }
         this.handleChange = this.handleChange.bind(this);
-      
 
     }
     handleChange(event) {
@@ -49,7 +46,8 @@ class ListRecord extends React.Component {
     closeIt = () => {
         this.setState({"size" : 12})
     }
-  
+
+
     render() {
         let toppers = [];
         for (var i = 0; i < ((this.props.records.Reducer.records.length > 3) ? 3 : this.props.records.Reducer.records.length); i++) {
@@ -188,18 +186,16 @@ class ListRecord extends React.Component {
                                 </Col>
                             </Row>
                         </Container>
-                        
-                        
-                        <div style={{display: 'flex', justifyContent: 'center'}}> <br /> <QrCode value = {this.state.person["name"]["first"]+this.state.person["name"]["last"]+"\n"+"Team ID :"+this.state.person["teamId"]+"\nPoints :"+this.state.person["points"]} /></div>
-                        
-                        
-                          
                         <Container>
 
                             <h5><b> Team Id</b> : {this.state.person["teamId"]}</h5>
                             <h5><b> Year of Study</b> : {this.state.person["year"]}</h5>
                             <h5> <b> About </b>: {this.state.person["about"]}</h5>
-
+                        </Container>
+                        <Container> {/* Implementing QR Code here. It will show Name, TeamID, Year of Study, Points, Github Link, LinkedIn Link and Email of the user */}
+                          <center>
+                            <QRCode value={"Name: " + this.state.person["name"]["first"] + this.state.person["name"]["last"] + "\n\nTeam Id: " + this.state.person["teamId"] + "\n\nYear of Study: " + this.state.person["year"] + "\n\nPoints: " + this.state.person["points"] + "\n\nGitHub Link: " + this.state.person["social"].github + "\n\nLinkedIn Link: " + this.state.person["social"].linkedin + "\n\nEmail: " + this.state.person["email"] } />
+                          </center>
                         </Container>
                     </Col>
                 ) : ''}
