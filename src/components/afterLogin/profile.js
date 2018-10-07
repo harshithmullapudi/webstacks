@@ -27,8 +27,8 @@ class Profile extends Component {
             fields: {
                 gender :  { value: 'male', label: 'male' }
             },
-            btnState : true,
-            qrState : false
+            btnState : true
+           
         }
         this.onSubmit = (e) => {
             e.preventDefault();
@@ -61,11 +61,9 @@ class Profile extends Component {
         this.handleChange = (selectedOption) => {
             this.state.fields["gender"] = selectedOption
         }
-        this.qrHandle = this.qrHandle.bind(this);
+       
     }
-    qrHandle() {
-      this.setState({qrState : !this.state.qrState})
-    }
+   
 
     render() {
         let details;
@@ -88,10 +86,9 @@ class Profile extends Component {
                            className='cardTitle cardPoint'>{this.props.user.Reducer.user["points"]}</CardText>
                          
                           
-
-                          <button className="btn btn-outline-success" onClick ={this.qrHandle} >{this.state.qrState ? "Close" : "Generate QR"}</button>
-                          {this.state.qrState ? <div> <br /> <QrCode value = {this.props.user.Reducer.user["name"]["first"]+this.props.user.Reducer.user["name"]["last"]+"\n"+"Team ID :"+this.props.user.Reducer.user["teamId"]+"\nPoints :"+this.props.user.Reducer.user["points"]} /></div>: ""}
-                       
+                          <CardText className='cardTitle'>
+                         <QrCode value = {this.props.user.Reducer.user["name"]["first"]+this.props.user.Reducer.user["name"]["last"]+"\n"+"Team ID :"+this.props.user.Reducer.user["teamId"]+"\nPoints :"+this.props.user.Reducer.user["points"]} />
+                          </CardText>
                           
 
 

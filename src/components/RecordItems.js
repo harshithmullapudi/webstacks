@@ -32,11 +32,11 @@ class ListRecord extends React.Component {
             search : '',
             position: null,
             person: {},
-            size: 12,
-            qrState : false
+            size: 12
+            
         }
         this.handleChange = this.handleChange.bind(this);
-        this.qrHandle = this.qrHandle.bind(this);
+      
 
     }
     handleChange(event) {
@@ -49,11 +49,7 @@ class ListRecord extends React.Component {
     closeIt = () => {
         this.setState({"size" : 12})
     }
-    qrHandle() {
-        this.setState({qrState : !this.state.qrState})
-    }
-    
-
+  
     render() {
         let toppers = [];
         for (var i = 0; i < ((this.props.records.Reducer.records.length > 3) ? 3 : this.props.records.Reducer.records.length); i++) {
@@ -192,13 +188,12 @@ class ListRecord extends React.Component {
                                 </Col>
                             </Row>
                         </Container>
-                        <Container>
-
-                          <button className="btn btn-outline-success" onClick ={this.qrHandle} >{this.state.qrState ? "Close" : "Generate QR"}</button>
-                          {this.state.qrState ? <div> <br /> <QrCode value = {this.state.person["name"]["first"]+this.state.person["name"]["last"]+"\n"+"Team ID :"+this.state.person["teamId"]+"\nPoints :"+this.state.person["points"]} /></div>: ""}
-                       
+                        
+                        
+                        <div style={{display: 'flex', justifyContent: 'center'}}> <br /> <QrCode value = {this.state.person["name"]["first"]+this.state.person["name"]["last"]+"\n"+"Team ID :"+this.state.person["teamId"]+"\nPoints :"+this.state.person["points"]} /></div>
+                        
+                        
                           
-                        </Container>
                         <Container>
 
                             <h5><b> Team Id</b> : {this.state.person["teamId"]}</h5>
