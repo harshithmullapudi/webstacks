@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import store, {addQuestionDB, getQuestion, getQuestions} from "../../store";
 import './questionsPage.css'
 import RichTextEditor from 'react-rte';
-import {Button, Input, Form, FormGroup} from 'reactstrap';
+import {Button, Input, Form, FormGroup, Card, CardHeader, CardFooter, CardTitle, CardText, CardBody, CardLink} from 'reactstrap';
 import {notify} from "react-notify-toast";
 import connect from "react-redux/es/connect/connect";
 import {Link} from "react-router-dom";
@@ -44,14 +44,19 @@ class QuestionsView extends Component {
         }
         this.addQuestionStart = (e) => {
             e.preventDefault();
-            addQuestionDB(this.state.title, this.state.value.toString('html')).then(response => {
-                notify.show("Successfully added question", "success")
-                this.setState({
-                    value :  RichTextEditor.createEmptyValue(),
-                    title : '',
-                    addQuestion : false
+            if(this.state.title && this.state.value.toString('html')) {
+                addQuestionDB(this.state.title, this.state.value.toString('html')).then(response => {
+                    notify.show("Successfully added question", "success")
+                    this.setState({
+                        value: RichTextEditor.createEmptyValue(),
+                        title: '',
+                        addQuestion: false
+                    })
                 })
-            })
+            }
+            else {
+                notify.show("Fill the details correctly", "error");
+            }
         }
         this.cancelSelectionQuestion = () => {
             this.setState({
@@ -75,51 +80,48 @@ class QuestionsView extends Component {
                 if ((question.title.includes(this.state.search)) || (question.description.includes(this.state.search))) {
                     let description = [];
                     description.push(question.description)
-                    questions.push(<a href="#" key={question.id}
-                                      className="list-group-item list-group-item-action flex-column align-items-start">
-                        <div className="d-flex w-100 justify-content-between">
-                            <h5 className="mb-1"><b>{question.title}</b> (
-                                <small>by {question.name}</small>
-                                )
-                            </h5>
-                            <small>{(new Date(question.added)).toDateString()}</small>
-                        </div>
-                        <div className="mb-1">
-                            <div dangerouslySetInnerHTML={{__html: description}}/>
-                        </div>
-                        <div>
-                            <Button className='float-right' color="link" onClick={() => {
+                    questions.push(  <Card className='cardCss' key={question.id}>
+                        <CardBody>
+                            <CardTitle><b>{question.title}</b>
+                                <span className='date float-right'>{(new Date(question.added)).toDateString()}</span>
+                            </CardTitle>
+                            <CardText>  <div dangerouslySetInnerHTML={{__html: description}}/></CardText>
+                            <Button color="info" className='float-right' onClick={() => {
                                 this.selectQuestion(question)
                             }
-                            }>View</Button></div>
-                    </a>)
+                            }>View</Button>
+                        </CardBody>
+                        <CardFooter>
+                            <small>by <b>{question.name}</b></small>
+                            { Object.keys(question.comments).map(k => question.comments[k]).length ?  <p className='float-right'><b> {Object.keys(question.comments).map(k => question.comments[k]).length} Comments </b></p> : '' }
+                        </CardFooter>
+                    </Card>)
                 }
             })
         }
         else
         {
             this.props.questions.Reducer.questions.forEach(question => {
-
                 let description = [];
                 description.push(question.description)
-                questions.push(<a href="#" key={question.id}
-                                  className="list-group-item list-group-item-action flex-column align-items-start">
-                    <div className="d-flex w-100 justify-content-between">
-                        <h5 className="mb-1"><b>{question.title}</b> (
-                            <small>by {question.name}</small>
-                            )
-                        </h5>
-                        <small>{(new Date(question.added)).toDateString()}</small>
-                    </div>
-                    <div className="mb-1">
-                        <div dangerouslySetInnerHTML={{__html: description}}/>
-                    </div>
-                    <div>
-                        <Button className='float-right' color="link" onClick={() => {
-                            this.selectQuestion(question)
-                        }
-                        }>View</Button></div>
-                </a>)
+                questions.push(
+                    <Card className='cardCss' key={question.id}>
+                        <CardBody>
+                            <CardTitle><b>{question.title}</b>
+                            <span className='date float-right'>{(new Date(question.added)).toDateString()}</span>
+                            </CardTitle>
+                            <CardText>  <div dangerouslySetInnerHTML={{__html: description}}/></CardText>
+                            <Button color="info" className='float-right' onClick={() => {
+                                this.selectQuestion(question)
+                            }
+                            }>View</Button>
+                        </CardBody>
+                        <CardFooter>
+                            <small>by <b>{question.name}</b></small>
+                            { Object.keys(question.comments).map(k => question.comments[k]).length ?  <p className='float-right'><b> {Object.keys(question.comments).map(k => question.comments[k]).length} Comments </b></p> : '' }
+                        </CardFooter>
+                    </Card>
+                )
             })
         }
         if(questions.length === 0)
@@ -168,8 +170,11 @@ class QuestionsView extends Component {
                         </Form>
                 </div> :''}
                 {this.state.selectedQuestion && this.props.questions.Reducer.question ?  <Questionview user={this.props.questions.Reducer.user}/> : <div className='container'>
-                    <div className="list-group">
+                    <div>
                         {questions}
+                    </div>
+                    <div className="list-group">
+
                     </div>
                 </div>}
             </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './questionView.css'
 import RichTextEditor from 'react-rte';
+import  {notify} from 'react-notify-toast'
 import {Form,FormGroup, Button, ListGroup, ListGroupItem, ListGroupItemHeading} from "reactstrap";
 import {Link} from "react-router-dom";
 import {addComentDB} from '../../store'
@@ -20,11 +21,16 @@ class QuestionView extends Component {
             }
         };
         this.addComent = () => {
-            addComentDB(this.props.state.Reducer.question, this.state.value.toString('html')).then(result => {
-                this.setState({
-                    value: RichTextEditor.createEmptyValue()
+            if(this.props.state.Reducer.question && this.state.value.toString('html')) {
+                addComentDB(this.props.state.Reducer.question, this.state.value.toString('html')).then(result => {
+                    this.setState({
+                        value: RichTextEditor.createEmptyValue()
+                    })
                 })
-            })
+            }
+            else {
+                notify.show("Kindly check your input", "error")
+            }
         }
     }
     render() {
