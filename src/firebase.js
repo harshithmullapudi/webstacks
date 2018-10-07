@@ -1,7 +1,7 @@
 import firebase from 'firebase'
 
 
-const config = JSON.parse(process.env.firebase);
+const config = process.env.config
 firebase.initializeApp(config);
 
 export const database = firebase.database()
