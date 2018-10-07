@@ -144,6 +144,14 @@ class ListRecord extends React.Component {
                         </div>
                         <CardTitle
                             className='cardTitle'>{this.state.person["name"]["first"]} {this.state.person["name"]["last"]}</CardTitle>
+
+                        {this.state.position === 0 ?
+                            <div className='text-center'><img  alt='medal' src={goldMedal} width='40'/></div> : ''}
+                        {this.state.position === 1 ?
+                            <div className='text-center'><img alt='medal' src={silverMedal} width='40'/></div> : ''}
+                        {this.state.position === 2 ?
+                            <div className='text-center'><img alt='medal' src={bronzeMedal} width='40'/></div> : ''}
+                        <br />
                         <div className="progressBar">
                           <Progress striped  value={this.state.person["points"]} max={maxPoints} />
                         </div>
