@@ -14,6 +14,7 @@ import mail from '../assets/mail.svg'
 import {Container, Row, Col, Table, Button} from 'reactstrap';
 import {getRecordsThunk} from "../store";
 import {FaSearch} from 'react-icons/fa';
+import QrCode from 'qrcode.react';
 function importAll(r) {
     let images = {};
     r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
@@ -31,9 +32,11 @@ class ListRecord extends React.Component {
             search : '',
             position: null,
             person: {},
-            size: 12
+            size: 12,
+            qrState : false
         }
         this.handleChange = this.handleChange.bind(this);
+        this.qrHandle = this.qrHandle.bind(this);
 
     }
     handleChange(event) {
@@ -46,7 +49,10 @@ class ListRecord extends React.Component {
     closeIt = () => {
         this.setState({"size" : 12})
     }
-
+    qrHandle() {
+        this.setState({qrState : !this.state.qrState})
+    }
+    
 
     render() {
         let toppers = [];
@@ -185,6 +191,13 @@ class ListRecord extends React.Component {
                                     </div>
                                 </Col>
                             </Row>
+                        </Container>
+                        <Container>
+
+                          <button className="btn btn-outline-success" onClick ={this.qrHandle} >{this.state.qrState ? "Close" : "Generate QR"}</button>
+                          {this.state.qrState ? <div> <br /> <QrCode value = {this.state.person["name"]["first"]+this.state.person["name"]["last"]+"\n"+"Team ID :"+this.state.person["teamId"]+"\nPoints :"+this.state.person["points"]} /></div>: ""}
+                       
+                          
                         </Container>
                         <Container>
 

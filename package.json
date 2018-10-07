@@ -8,6 +8,7 @@
     "firebase": "^4.11.0",
     "history": "^4.7.2",
     "is-github-url": "^1.2.2",
+    "qrcode.react": "^0.8.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-fontawesome": "^1.6.1",
@@ -40,5 +41,13 @@
   "main": "index.js",
   "devDependencies": {},
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arav1nd2/webstacks-1.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Arav1nd2/webstacks-1/issues"
+  },
+  "homepage": "https://github.com/Arav1nd2/webstacks-1#readme"
 }
