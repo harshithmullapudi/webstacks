@@ -14,6 +14,7 @@ import mail from '../assets/mail.svg'
 import {Container, Row, Col, Table, Button} from 'reactstrap';
 import {getRecordsThunk} from "../store";
 import {FaSearch} from 'react-icons/fa';
+import QrCode from 'qrcode.react';
 function importAll(r) {
     let images = {};
     r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
@@ -32,8 +33,10 @@ class ListRecord extends React.Component {
             position: null,
             person: {},
             size: 12
+            
         }
         this.handleChange = this.handleChange.bind(this);
+      
 
     }
     handleChange(event) {
@@ -46,8 +49,7 @@ class ListRecord extends React.Component {
     closeIt = () => {
         this.setState({"size" : 12})
     }
-
-
+  
     render() {
         let toppers = [];
         for (var i = 0; i < ((this.props.records.Reducer.records.length > 3) ? 3 : this.props.records.Reducer.records.length); i++) {
@@ -186,6 +188,12 @@ class ListRecord extends React.Component {
                                 </Col>
                             </Row>
                         </Container>
+                        
+                        
+                        <div style={{display: 'flex', justifyContent: 'center'}}> <br /> <QrCode value = {this.state.person["name"]["first"]+this.state.person["name"]["last"]+"\n"+"Team ID :"+this.state.person["teamId"]+"\nPoints :"+this.state.person["points"]} /></div>
+                        
+                        
+                          
                         <Container>
 
                             <h5><b> Team Id</b> : {this.state.person["teamId"]}</h5>
