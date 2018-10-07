@@ -15,6 +15,9 @@ import {Container, Row, Col, Table, Button} from 'reactstrap';
 import {getRecordsThunk} from "../store";
 import {FaSearch} from 'react-icons/fa';
 import QrCode from 'qrcode.react';
+import Comment from './comment/comment.js';
+
+
 function importAll(r) {
     let images = {};
     r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
@@ -200,6 +203,10 @@ class ListRecord extends React.Component {
                             <h5><b> Year of Study</b> : {this.state.person["year"]}</h5>
                             <h5> <b> About </b>: {this.state.person["about"]}</h5>
 
+                        </Container>
+                        <Container>
+                            <h5> <b>Comments </b></h5>
+                            <Comment childName = {this.state.person["name"]["first"]+this.state.person["name"]["last"]}/>
                         </Container>
                     </Col>
                 ) : ''}

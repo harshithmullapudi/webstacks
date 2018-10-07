@@ -1,0 +1,18 @@
+.combox {
+	width: 70%;
+	padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 500px;
+    box-sizing: border-box;
+}
+.comsubmit {
+	background-color: #4CAF50; 
+	color: white;
+	border-color:#4CAF50; 
+	padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+}
