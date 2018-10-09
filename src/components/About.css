@@ -4,14 +4,14 @@
     justify-content:space-between;
 	margin-left:10px;
 	margin-right:50px;
-	margin-top: 20px; 
+	margin-top: 20px;
 
 }
 
 #aboutimg{
-	max-width:690px; 
+	max-width:690px;
     margin-left:20px;
-    
+    border-radius: 7%;
 
 }
 
@@ -20,9 +20,9 @@
 }
 #aboutimg1{
 
-	max-width:690px; 
+	max-width:690px;
     margin-left:20px;
-	
+	border-radius: 7%;
 
 }
 .about-text{
@@ -32,7 +32,7 @@
 	font-weight: bold;
 	border-radius:8px;
 	background-color: #E8F141;
-	margin-left: 20px; 
+	margin-left: 20px;
 	margin-right:20px;
 	margin-top:10px;
 }
