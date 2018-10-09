@@ -1,0 +1,19 @@
+.container
+{
+    padding: 3%;
+    background-color: #f8f9fa;
+}
+.card
+{
+    margin-bottom: 30px;
+}
+p
+{
+	margin: 1em 0;
+    line-height: 1.6;
+    font-size: 20px;
+    font-size: 0.8125rem;
+    font-family: 'Karla', sans-serif;
+    color: black;
+    display: inline-block;
+}
