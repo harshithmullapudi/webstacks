@@ -86,12 +86,12 @@ class ListRecord extends React.Component {
             if(this.state.search === ''  || (this.props.records.Reducer.records[i]["name"]["first"].toLowerCase().includes(this.state.search.toLowerCase())) ||  (this.props.records.Reducer.records[i]["name"]["last"].toLowerCase().includes(this.state.search.toLowerCase()))) {
 
                 others.push(
-                      <Row className="list hover" onClick={this.createView.bind(this, this.props.records.Reducer.records[i], i)}>
+                      <Row key={i} className="list hover" onClick={this.createView.bind(this, this.props.records.Reducer.records[i], i)}>
                         <Col className="">
                           <img src={this.props.records.Reducer.records[i]["photo"]["type"] === 'boys' ? boys[this.props.records.Reducer.records[i]["photo"]["number"] + '.svg'] : girls[this.props.records.Reducer.records[i]["photo"]["number"] + '.svg']} height="80px" class="rounded-circle align-self-start mr-3" />
                         </Col>
                         <Col className="list-text">
-                          <h5>{i}. {this.props.records.Reducer.records[i]["name"]["first"]}</h5> ( Team ID : {this.props.records.Reducer.records[i]["teamId"]} )
+                          <h5>{i+1}. {this.props.records.Reducer.records[i]["name"]["first"]}</h5> ( Team ID : {this.props.records.Reducer.records[i]["teamId"]} )
                         </Col>
                         <Col className="list-text">
                           <h5 className="list-text">{this.props.records.Reducer.records[i]["points"]}</h5>
