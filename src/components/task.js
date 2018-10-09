@@ -155,6 +155,16 @@ class Tasks extends Component {
                         {/*</Alert> : ''}*/}
 
 
+                        {/*<br /><br /><b>** The upload button would show up at 4pm on September 20th. All the best **</b>*/}
+                        {this.state.task.indexOf(3) > -1 ?   <Alert color="success">
+                        Submitted !! :) will get back soon
+                        </Alert> : ''}
+                        {this.props.user.Reducer.user === null || this.state.task.indexOf(3) > -1 || this.state.btnState ? '' : <Button color="success" className='float-right' size='sm' onClick={this.changeStateTrue}> Submit </Button>}
+                        {this.props.user.Reducer.user !== null && this.state.task.indexOf(3) < 0 && this.state.btnState ? <Form> <FormElement name="github" inputType="text"  fullName="Give the github url" action={this.onChange} /> </Form> : ''}
+                        {this.props.user.Reducer.user !== null && this.state.task.indexOf(3) < 0 && this.state.btnState ? <Button color="success" className='float-right' onClick={this.submitTask}> Submit </Button>: ''}
+                        {this.props.user.Reducer.user !== null && this.state.task.indexOf(3) < 0 && this.state.btnState ? <Button color="error" className='float-right margin' onClick={this.changeStateFalse}> Cancel </Button>: ''}
+
+
                         <span className="cd-date">Oct 5</span>
                     </div>
                 </div>

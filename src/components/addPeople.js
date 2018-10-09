@@ -22,7 +22,7 @@ class AddView extends Component {
                 email: "",
                 phone : 0,
                 tags : [],
-                socialFacebook: '',
+                socialGithub: '',
                 socialLinkedin : '',
                 gender :   { value: 'male', label: 'male' }
             },
@@ -40,12 +40,12 @@ class AddView extends Component {
                 photo["type"] = "girls"
             }
             photo["number"] = Math.floor((Math.random() * 7) + 1);
-            store.dispatch(addUser({first : this.state.fields.firstName, last : this.state.fields.lastName}, this.state.fields.about, this.state.fields.email, this.state.fields.phone, {facebook  : this.state.fields.socialFacebook, linkedin : this.state.fields.socialLinkedin}, photo));
+            store.dispatch(addUser({first : this.state.fields.firstName, last : this.state.fields.lastName}, this.state.fields.about, this.state.fields.email, this.state.fields.phone, {github  : this.state.fields.socialGithub, linkedin : this.state.fields.socialLinkedin}, photo));
             store.dispatch(push('/'))
         }
         this.onChange = (id, field, val) => {
             this.state.fields[field] = val;
-           let state  = (this.state.fields.firstName !== '' && this.state.fields.lastName !== '' && this.state.fields.about !== '' && this.state.fields.email !== '' && this.state.fields.phone !== 0 && this.state.fields.socialFacebook !== '' && this.state.fields.socialLinkedin !== ''  && this.state.fields.gender !== '')
+           let state  = (this.state.fields.firstName !== '' && this.state.fields.lastName !== '' && this.state.fields.about !== '' && this.state.fields.email !== '' && this.state.fields.phone !== 0 && this.state.fields.socialGithub !== '' && this.state.fields.socialLinkedin !== ''  && this.state.fields.gender !== '')
         this.setState({"btnState" : state});
         }
         this.handleChange = (selectedOption) => {
@@ -70,7 +70,7 @@ class AddView extends Component {
                 <FormElement name="about" inputType="text" fullName="About" action={this.onChange} />
                 <FormElement name="email" inputType="email" fullName="Email" action={this.onChange} />
                 <FormElement name="phone" inputType="number" fullName="Phone" action={this.onChange} />
-                <FormElement name="socialFacebook" inputType="text" fullName="Facebook Profile Link" action={this.onChange} />
+                <FormElement name="socialGithub" inputType="text" fullName="Github Link" action={this.onChange} />
                 <FormElement name="socialLinkedin" inputType="text" fullName="Linkedin Profile Link" action={this.onChange} />
                 <label> Gender </label>
                 <Select
