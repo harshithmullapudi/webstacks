@@ -14,6 +14,7 @@ import Provider from "react-redux/es/components/Provider";
 import store, {checkUser, history, watchTaskChangedEvent} from "./store";
 import AddView from "./components/addPeople";
 import Tasks from "./components/task";
+import About from "./components/About"
 import LoginView from "./components/login";
 import Notifications from 'react-notify-toast';
 import {signOut} from './store'
@@ -49,7 +50,10 @@ class App extends Component {
                         <Link class='navbar-brand' href="/" to="/" > <img src={logo}  width="200" height="auto" alt=""/></Link>
                     <Nav className="ml-auto" navbar>
                         <NavItem >
-                            <Link class="nav-link" to='/leaderboard'>Leaderboard</Link>
+                            <Link class="nav-link" to='/about'>About</Link>                                                                                       
+                        </NavItem>
+                        <NavItem >
+                            <Link class="nav-link" to='/leaderboard'>Leaderboard</Link> 
                         </NavItem>
                         <NavItem >
                             <Link class="nav-link" to='/tasks'>Tasks</Link>
@@ -62,6 +66,7 @@ class App extends Component {
                 </Navbar>
                     <div className="card main">
                         <Route exact path="/" component={QuestionsView} />
+                        <Route exact path="/about" component={About} />
                         <Route exact path="/add" component={AddView} />
                         <Route exact path="/tasks" component={Tasks} />
                         <Route exact path="/login" component={LoginView} />
