@@ -1,6 +1,6 @@
 # React - webstacks
 
-## A website designed for the club (Web development) to make learning process much easier and also competitive.
+## A website designed for the club (Web development) to make the learning process much easier and also competitive.
 
 ### Features
 1. Leaderboard
