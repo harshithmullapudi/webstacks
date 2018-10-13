@@ -1,0 +1,50 @@
+.head1{
+    color:gray;
+    height: 960px;
+}
+
+
+.chat1
+{
+    background-color: lightblue;
+    width: 30%;
+    float: left;
+    font-size: 20px;
+    margin-left: 10%;
+
+    color:black;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.chat2
+{
+    background-color: lightgreen;
+    width: 30%;
+    float:right;
+    font-size: 20px;
+    margin-right: 10%;
+    color:black;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.chatContainer
+{
+    height: 60px;
+}
+
+.chatContainers
+{
+    padding-right:30px; 
+    padding-left: 30px;
+width:100%;
+bottom: 30px;
+position: fixed;
+}
+
+input[type=text] {
+    border: 2px solid cyan;
+}
+
+
