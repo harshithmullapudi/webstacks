@@ -155,7 +155,44 @@ class Tasks extends Component {
                         {/*</Alert> : ''}*/}
 
 
+                        {/*<br /><br /><b>** The upload button would show up at 4pm on September 20th. All the best **</b>*/}
+                        {this.state.task.indexOf(3) > -1 ?   <Alert color="success">
+                        Submitted !! :) will get back soon
+                        </Alert> : ''}
+                        {this.props.user.Reducer.user === null || this.state.task.indexOf(3) > -1 || this.state.btnState ? '' : <Button color="success" className='float-right' size='sm' onClick={this.changeStateTrue}> Submit </Button>}
+                        {this.props.user.Reducer.user !== null && this.state.task.indexOf(3) < 0 && this.state.btnState ? <Form> <FormElement name="github" inputType="text"  fullName="Give the github url" action={this.onChange} /> </Form> : ''}
+                        {this.props.user.Reducer.user !== null && this.state.task.indexOf(3) < 0 && this.state.btnState ? <Button color="success" className='float-right' onClick={this.submitTask}> Submit </Button>: ''}
+                        {this.props.user.Reducer.user !== null && this.state.task.indexOf(3) < 0 && this.state.btnState ? <Button color="error" className='float-right margin' onClick={this.changeStateFalse}> Cancel </Button>: ''}
+
+
                         <span className="cd-date">Oct 5</span>
+                    </div>
+                </div>
+                <div className="cd-timeline-block">
+                    <div className="cd-timeline-img cd-picture">
+                        <img src={task}
+                             alt="Picture"/>
+                    </div>
+                    <div className="cd-timeline-content">
+                        <h2 className='heading'> Final </h2>
+                        <p>
+                            There are 6 stages in this task.<br />
+                            1. Creating a new Component called CHAT Component.<br />
+                            2. Creating a UI for chat.<br />
+                            3. Adding common chat functionality i.e anybody can message here.<br />
+                            4. Adding feature -  Images/files in chat.<br />
+                            5. Adding feature - letting people tag by name i.e when he/she types @.<br />
+                            6. Adding feature - emojis in chat.<br /><br />
+
+                            Every stage should be a pull request to the module.<br /><br />
+
+                            Refer : <br />
+                            1. <a href='https://github.com/harshithmullapudi/emoji-picker'>Here you have example task to make emoji picker can try using the code.</a><br />
+
+
+                        </p>
+
+                        <span className="cd-date">Oct 13</span>
                     </div>
                 </div>
             </section>

@@ -137,36 +137,37 @@ h5
 }
 
 #\30 {
-  background: linear-gradient(to right, #F7971E,#ffec99,#FFD200);
+  /*background: linear-gradient(to right, #F7971E,#ffec99,#FFD200);*/
 }
 #\31 {
-  background: linear-gradient(to right, #ADA996,#F2F2F2,#DBDBDB,#EAEAEA);
+  /*background: linear-gradient(to right, #ADA996,#F2F2F2,#DBDBDB,#EAEAEA);*/
 }
 #\32 {
-  background: linear-gradient(to right, #b33c00,#ffbb99,#ff661a);
+  /*background: linear-gradient(to right, #b33c00,#ffbb99,#ff661a);*/
 }
 .list {
   margin: 15px auto;
   min-height: 100px;
-  border-radius: 60px;
+  /*border-radius: 60px;*/
+    background-color: #fff  ;
   padding: 10px 10px;
 }
 .list-text {
   margin: auto;
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .list:nth-child(4n+2) {
-  background: linear-gradient(to left,#CC95C0,#DBD4B4,#7AA1D2)
+  /*background: linear-gradient(to left,#CC95C0,#DBD4B4,#7AA1D2)*/
 }
 .list:nth-child(4n+1) {
-  background: linear-gradient(to right,#b20a2c,#fffbd5)
+  /*background: linear-gradient(to right,#b20a2c,#fffbd5)*/
 }
 .list:nth-child(4n+3) {
-  background: linear-gradient(to right,#799F0C,#FFE000)
+  /*background: linear-gradient(to right,#799F0C,#FFE000)*/
 }
 .list:nth-child(4n+0) {
-  background: linear-gradient(to right,#005AA7,#FFFDE4)
+  /*background: linear-gradient(to right,#005AA7,#FFFDE4)*/
 }
 .hover:hover {
   transition: all .1s ease-in-out;
