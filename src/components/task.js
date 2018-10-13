@@ -168,6 +168,33 @@ class Tasks extends Component {
                         <span className="cd-date">Oct 5</span>
                     </div>
                 </div>
+                <div className="cd-timeline-block">
+                    <div className="cd-timeline-img cd-picture">
+                        <img src={task}
+                             alt="Picture"/>
+                    </div>
+                    <div className="cd-timeline-content">
+                        <h2 className='heading'> Final </h2>
+                        <p>
+                            There are 6 stages in this task.<br />
+                            1. Creating a new Component called CHAT Component.<br />
+                            2. Creating a UI for chat.<br />
+                            3. Adding common chat functionality i.e anybody can message here.<br />
+                            4. Adding feature -  Images/files in chat.<br />
+                            5. Adding feature - letting people tag by name i.e when he/she types @.<br />
+                            6. Adding feature - emojis in chat.<br /><br />
+
+                            Every stage should be a pull request to the module.<br /><br />
+
+                            Refer : <br />
+                            1. <a href='https://github.com/harshithmullapudi/emoji-picker'>Here you have example task to make emoji picker can try using the code.</a><br />
+
+
+                        </p>
+
+                        <span className="cd-date">Oct 13</span>
+                    </div>
+                </div>
             </section>
             </body>
         )
