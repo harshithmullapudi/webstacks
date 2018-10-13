@@ -1,0 +1,21 @@
+.message-sender {
+  font-size: 0.9em;
+  color: grey;
+  margin-bottom: 6px;
+  padding-left: 5px;
+}
+.message-text-container {
+  margin-bottom: 20px;
+}
+.message-text {
+  background: lightblue;
+  font-size: 1.2em;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+.send-message {
+  position: fixed;
+  bottom: 20px;
+  width: 90%;
+  margin: auto;
+}
