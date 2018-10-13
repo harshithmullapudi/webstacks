@@ -70,8 +70,7 @@ class Profile extends Component {
           details =   (
                <Card className='h-100'>
                  {/* Implementing QR Code here. It will show Name, TeamID, Year of Study, Points, Github Link, LinkedIn Link and Email of the user */}
-                 <QRCode className="qr" value={"Name: " + this.props.user.Reducer.user["name"]["first"] + this.props.user.Reducer.user["name"]["last"] + "\n\nTeam Id: " + this.props.user.Reducer.user["teamId"] + "\n\nYear of Study: " + this.props.user.Reducer.user["year"] + "\n\nPoints: " + this.props.user.Reducer.user["points"] + "\n\nGitHub Link: " + this.props.user.Reducer.user["social"].github + "\n\nLinkedIn Link: " + this.props.user.Reducer.user["social"].linkedin + "\n\nEmail: " + this.props.user.Reducer.user["email"] } />
-                   <div className="text-center">
+                 <div className="text-center">
                        <img src={this.props.user.Reducer.user["photo"]["type"] === 'boys' ? boys[this.props.user.Reducer.user["photo"]["number"] + '.svg'] : girls[this.props.user.Reducer.user["photo"]["number"] + '.svg']}
                             className="img-fluid rounded-circle toppers" alt="..."/>
                    </div>
@@ -80,6 +79,10 @@ class Profile extends Component {
                            className='cardTitle'>{this.props.user.Reducer.user["name"]["first"]} <span className='teamId'> ( Team ID : {this.props.user.Reducer.user["teamId"]} ) </span></CardTitle>
                        <CardText
                            className='cardTitle cardPoint'>{this.props.user.Reducer.user["points"]}</CardText>
+                       <div className={'text-center'}>
+                           <QRCode className="qr" value={"Name: " + this.props.user.Reducer.user["name"]["first"] + this.props.user.Reducer.user["name"]["last"] + "\n\nTeam Id: " + this.props.user.Reducer.user["teamId"] + "\n\nYear of Study: " + this.props.user.Reducer.user["year"] + "\n\nPoints: " + this.props.user.Reducer.user["points"] + "\n\nGitHub Link: " + this.props.user.Reducer.user["social"].github + "\n\nLinkedIn Link: " + this.props.user.Reducer.user["social"].linkedin + "\n\nEmail: " + this.props.user.Reducer.user["email"] } />
+
+                       </div>
                        <Form>
                            <FormElement name="first" inputType="text" value={this.props.user.Reducer.user ? this.props.user.Reducer.user.name.first : '' } fullName="Enter your First Name" action={this.onChange} />
                            <FormElement name="last" inputType="text" value={this.props.user.Reducer.user ? this.props.user.Reducer.user.name.last : '' } fullName="Enter your Last Name" action={this.onChange} />

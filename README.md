@@ -12,3 +12,8 @@
 ### Contributions
 
 1. [ Aravind Srinivasan ](https://github.com/Arav1nd2) -  QrCode feature 
+2. [Ramvardhan](https://github.com/Ram-the-coder) -
+    1.   QR will show Name, TeamID, Year of Study, Points, Github Link, LinkedIn Link and Email of the user.
+    2.   Replaced table with Divs and used grid for alignment.
+     3. Removed View button and made the whole record clickable 
+     4.  Added points progress bar
