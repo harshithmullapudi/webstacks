@@ -19,6 +19,7 @@ import Notifications from 'react-notify-toast';
 import {signOut} from './store'
 import ProfileView from "./components/afterLogin/profileView";
 import QuestionsView from "./components/questions/questionPage";
+import Chat from "./components/chat"
 class App extends Component {
     constructor(props) {
         super(props);
@@ -56,6 +57,7 @@ class App extends Component {
                         </NavItem>
                         { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/login'>Login</Link> </NavItem>  : ''}
                         { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/add'>Register</Link></NavItem> : ''}
+                        { this.state.authUser ?  <NavItem> <Link class="nav-link" to='/chat'>Chat Room</Link></NavItem> : ''}
                         { this.state.authUser ?  <NavItem> <Link class="nav-link" to='/profile'>Profile</Link></NavItem> : ''}
                         { this.state.authUser ?  <NavItem> <Link to='/' class="nav-link" onClick={signOut}> Log out</Link></NavItem> : ''}
                     </Nav>
@@ -67,6 +69,7 @@ class App extends Component {
                         <Route exact path="/login" component={LoginView} />
                         <Route exact path="/profile" component={ProfileView} />
                         <Route exact path="/leaderboard" component={ListView} />
+                        <Route exact path="/chat" component={Chat} />
                     </div>
             </main>
         </Router>
