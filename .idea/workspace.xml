@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27111b7d-91ae-43e4-aa13-766c8551127b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/tasks.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tasks.css" afterDir="false" />
-    </list>
+    <list default="true" id="27111b7d-91ae-43e4-aa13-766c8551127b" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +112,7 @@
     <session id="-2145532077">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
@@ -127,7 +125,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="374" />
+          <entry key="css" value="376" />
           <entry key="js" value="7131" />
           <entry key="json" value="9" />
           <entry key="md" value="441" />
@@ -135,7 +133,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="374" />
+          <entry key="CSS" value="376" />
           <entry key="JSON" value="9" />
           <entry key="JavaScript" value="7131" />
           <entry key="Markdown" value="441" />
@@ -173,8 +171,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/tasks.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="636">
-              <caret line="500" column="19" selection-start-line="500" selection-start-column="19" selection-end-line="500" selection-end-column="19" />
+            <state relative-caret-position="619">
+              <caret line="499" selection-start-line="499" selection-end-line="502" />
             </state>
           </provider>
         </entry>
@@ -297,6 +295,8 @@
       <find>login</find>
       <find>getQues</find>
       <find>notif</find>
+      <find>a href</find>
+      <find>a</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -468,16 +468,15 @@
       <workItem from="1538981365968" duration="9000" />
       <workItem from="1539002140313" duration="1919000" />
       <workItem from="1539011250030" duration="1327000" />
-      <workItem from="1539432895754" duration="1847000" />
+      <workItem from="1539432895754" duration="2416000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105352000" />
+    <option name="totallyTimeSpent" value="105921000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34541577" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -747,8 +746,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/tasks.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="500" column="19" selection-start-line="500" selection-start-column="19" selection-end-line="500" selection-end-column="19" />
+        <state relative-caret-position="619">
+          <caret line="499" selection-start-line="499" selection-end-line="502" />
         </state>
       </provider>
     </entry>
