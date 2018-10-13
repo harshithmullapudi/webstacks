@@ -1,0 +1,16 @@
+
+.bodycomment {
+  display: flex;
+  width: 70%;
+  margin-top: 8px; 
+  justify-content: center;
+  flex-direction: column;
+}
+.bodycomment > div {
+  text-align: center;
+  background-color: #f1f1f1;
+  border-radius: 50px;
+  margin: 10px;
+  padding: 10px;
+  font-size: 18px;
+}
