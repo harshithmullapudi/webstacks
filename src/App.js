@@ -8,6 +8,7 @@ import {
     Nav,
     NavItem,
 } from 'reactstrap';
+import Chatview from  "./components/chat"
 import * as firebase from './firebase';
 import {Link} from 'react-router-dom'
 import Provider from "react-redux/es/components/Provider";
@@ -54,6 +55,8 @@ class App extends Component {
                         <NavItem >
                             <Link class="nav-link" to='/tasks'>Tasks</Link>
                         </NavItem>
+                        { this.state.authUser ?  <NavItem> <Link class="nav-link" to='/chat'>ChatRoom</Link> </NavItem>  : ''}
+
                         { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/login'>Login</Link> </NavItem>  : ''}
                         { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/add'>Register</Link></NavItem> : ''}
                         { this.state.authUser ?  <NavItem> <Link class="nav-link" to='/profile'>Profile</Link></NavItem> : ''}
@@ -62,12 +65,15 @@ class App extends Component {
                 </Navbar>
                     <div className="card main">
                         <Route exact path="/" component={QuestionsView} />
+                        <Route exact path="/chat" component={Chatview} />
+
                         <Route exact path="/add" component={AddView} />
                         <Route exact path="/tasks" component={Tasks} />
                         <Route exact path="/login" component={LoginView} />
                         <Route exact path="/profile" component={ProfileView} />
                         <Route exact path="/leaderboard" component={ListView} />
                     </div>
+             
             </main>
         </Router>
         </Provider>
