@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27111b7d-91ae-43e4-aa13-766c8551127b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tasks.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tasks.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -127,7 +127,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="363" />
+          <entry key="css" value="374" />
           <entry key="js" value="7131" />
           <entry key="json" value="9" />
           <entry key="md" value="441" />
@@ -135,7 +135,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="363" />
+          <entry key="CSS" value="374" />
           <entry key="JSON" value="9" />
           <entry key="JavaScript" value="7131" />
           <entry key="Markdown" value="441" />
@@ -143,7 +143,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="7" />
+          <entry key="css" value="8" />
           <entry key="js" value="24" />
           <entry key="json" value="3" />
           <entry key="md" value="2" />
@@ -151,7 +151,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="7" />
+          <entry key="CSS" value="8" />
           <entry key="JSON" value="3" />
           <entry key="JavaScript" value="24" />
           <entry key="Markdown" value="2" />
@@ -161,11 +161,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/task.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="178" column="35" selection-start-line="178" selection-start-column="35" selection-end-line="178" selection-end-column="35" />
+            <state relative-caret-position="2186">
+              <caret line="189" column="38" selection-start-line="189" selection-start-column="32" selection-end-line="189" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/tasks.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="636">
+              <caret line="500" column="19" selection-start-line="500" selection-start-column="19" selection-end-line="500" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -223,18 +232,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="565">
               <caret line="151" column="28" selection-start-line="151" selection-start-column="28" selection-end-line="151" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/questions/questionView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="31" column="61" selection-start-line="31" selection-start-column="61" selection-end-line="31" selection-end-column="61" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -320,7 +317,6 @@
         <option value="$PROJECT_DIR$/src/components/login.css" />
         <option value="$PROJECT_DIR$/src/components/login.js" />
         <option value="$PROJECT_DIR$/src/App.css" />
-        <option value="$PROJECT_DIR$/src/components/tasks.css" />
         <option value="$PROJECT_DIR$/src/components/questions/questionView.css" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/node_modules/react-qr/index.js" />
@@ -338,6 +334,7 @@
         <option value="$PROJECT_DIR$/src/components/afterLogin/profile.css" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/components/task.js" />
+        <option value="$PROJECT_DIR$/src/components/tasks.css" />
       </list>
     </option>
   </component>
@@ -384,21 +381,13 @@
               <item name="webstacks" type="b2602c69:ProjectViewProjectNode" />
               <item name="webstacks" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="webstacks" type="b2602c69:ProjectViewProjectNode" />
               <item name="webstacks" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="afterLogin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webstacks" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webstacks" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="questions" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -479,18 +468,18 @@
       <workItem from="1538981365968" duration="9000" />
       <workItem from="1539002140313" duration="1919000" />
       <workItem from="1539011250030" duration="1327000" />
-      <workItem from="1539432895754" duration="1603000" />
+      <workItem from="1539432895754" duration="1847000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105108000" />
+    <option name="totallyTimeSpent" value="105352000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34541577" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34541577" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -505,7 +494,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.16839917" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.16839917" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -597,13 +586,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/tasks.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2669">
-          <caret line="157" column="23" selection-start-line="157" selection-start-column="23" selection-end-line="157" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -758,8 +740,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/task.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="178" column="35" selection-start-line="178" selection-start-column="35" selection-end-line="178" selection-end-column="35" />
+        <state relative-caret-position="2186">
+          <caret line="189" column="38" selection-start-line="189" selection-start-column="32" selection-end-line="189" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/tasks.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="636">
+          <caret line="500" column="19" selection-start-line="500" selection-start-column="19" selection-end-line="500" selection-end-column="19" />
         </state>
       </provider>
     </entry>
