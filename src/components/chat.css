@@ -1,21 +1,82 @@
+/* Starts--------------------------------------------------------------- */
+.chat-component {
+  overflow: auto;
+}
+.chat-room {
+  margin: auto;
+  width: 100%;
+  min-width: 600px;
+  height: 90vh;
+  min-height: 500px;
+  display: flex;
+}
+
+.sidebar {
+  width: 25%;
+  background-color: #eae3ea;
+  padding: 1rem;
+  font-size: 1.05rem;
+}
+
+.chat-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 75%;
+}
+.chat-block-header {
+  padding: 1rem;
+  font-size: 15px;
+  color: #333;
+  border-bottom: 1px solid #bbb;
+}
+
+.chat-block-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 0rem 1rem;
+  max-height: 460px;
+  overflow: auto;
+}
+
+.message-block {
+  padding: 1rem;
+}
+
 .message-sender {
-  font-size: 0.9em;
-  color: grey;
+  font-size: 0.85rem;
+  color: #af5a50;
   margin-bottom: 6px;
   padding-left: 5px;
 }
 .message-text-container {
-  margin-bottom: 20px;
+  margin-bottom: 1.2rem;
+  border-radius: 8px;
+  background: #b56357;
+  color:white;
+  display: inline-block;
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
 }
 .message-text {
-  background: lightblue;
-  font-size: 1.2em;
-  border-radius: 8px;
-  padding: 4px 8px;
+  font-size: 1.1rem;
 }
-.send-message {
-  position: fixed;
-  bottom: 20px;
-  width: 90%;
-  margin: auto;
+
+.send-message-box {
+  margin-bottom: 1rem;
+  padding: 0rem 1rem 1rem 1rem;
+  height: 5%;
+}
+
+.send-message-box-input > div {
+  margin: 10px 10px 10px 10px;
+}
+
+.send-message-box-input input {
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  box-sizing: border-box;
+  font-size: 18px;
+  padding: 10px 8px;
+  outline: 0;
+  width: 100%;
 }
