@@ -19,6 +19,7 @@ const UPDATE_USERDATA  = 'update user data'
 const NULL_USERDATA  = 'null user data'
 const SUBMIT_TEST  = 'update git'
 const SET_QUESTON  = 'set question'
+const GET_CHAT = 'get chat'
 
 
 /**
@@ -29,7 +30,7 @@ export const removeTask = (task) => ({type: REMOVE_TASK, task})
 export const getTasks = (records) => ({type: GET_RECORDS, records})
 export const getQuestionsDispatch = (questions) => ({type: GET_QUESTIONS, questions})
 export const setQuestion = (question) => ({type:SET_QUESTON, question})
-
+export const getChatsDispatch = (chats) => ({type:GET_CHAT, chats})
 /**
  * THUNKS
  */
@@ -104,6 +105,25 @@ export function getQuestions() {
         })
     }
 }
+//A function to get the data from the DB
+export function getChats() {
+
+  return dispatch => {
+    database.ref('/chat/').limitToLast(12).on('value',snap => {
+        if(snap.val()) {
+          let values = Object.keys(snap.val()).map(k => {
+              return snap.val()[k];
+          });
+          values = values.filter(k => k);
+          setTimeout(() => {
+            dispatch(getChatsDispatch(values))
+          }, 1);
+        }
+    })
+  }
+}
+
+
 
 function updateUserData(user)
 {
@@ -125,6 +145,20 @@ export function addQuestionDB(title, description)
         name : store.getState().Reducer.user.name.first + store.getState().Reducer.user.name.last ,
         comments : [],
        added : (new Date()).getTime()
+    })
+}
+// Added a function to add the chat in db
+export function addChatDB(content)
+{
+    let id = Math.floor(Math.random()*90000) + 10000;
+   return database.ref("chat/"+ id ).push({
+       id : id,
+        description : content,
+        by : store.getState().Reducer.user.email,
+        name : store.getState().Reducer.user.name.first +" "+ store.getState().Reducer.user.name.last ,
+       added : (new Date()).getTime(),
+       pic : store.getState().Reducer.user.photo.type,
+       picid : store.getState().Reducer.user.photo.number
     })
 }
 
@@ -249,7 +283,7 @@ function submit_response(user){
 /**
  * REDUCER
  */
-function Reducer (state = { records : [], questions : [], user : null, question : null }, action) {
+function Reducer (state = { records : [], questions : [], user : null, question : null, chats : [] }, action) {
   switch (action.type) {
     case GET_USER:
           return { 'user' : action.user,"records" : state.records, "questions" : state.questions, "question" : state.question};
@@ -257,7 +291,9 @@ function Reducer (state = { records : [], questions : [], user : null, question 
           return { 'questions' : action.questions, "user" : state.user, "records" : state.records , "question" : state.question};
     case GET_RECORDS:
       return { 'records' : action.records, "user" : state.user,  "questions" : state.questions , "question" : state.question};
-      case SET_QUESTON:
+    case GET_CHAT:
+      return { 'records' : action.records, "user" : state.user, "chats" : action.chats};
+    case SET_QUESTON:
           return { 'records' : state.records, "user" : state.user,  "questions" : state.questions , "question" : action.question};
     case UPDATE_USER:
         upUser({'name': action.name, 'about' : action.about, 'photo' : action.photo, 'social' : action.social, 'phone' : action.phone}, action.key);
