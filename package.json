@@ -37,19 +37,19 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "description": "A website designed for the club (Web development) to make the learning process much easier and also competitive.",
   "main": "index.js",
   "devDependencies": {},
   "author": "",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Arav1nd2/webstacks-1.git"
+    "url": "git+https://github.com/harshithmullapudi/webstacks"
   },
   "bugs": {
-    "url": "https://github.com/Arav1nd2/webstacks-1/issues"
+    "url": "https://github.com/harshithmullapudi/webstacks/issues"
   },
-  "homepage": "https://github.com/Arav1nd2/webstacks-1#readme",
+  "homepage": "https://github.com/harshithmullapudi/webstacks#readme",
   "browserslist": [
     ">0.2%",
     "not dead",
