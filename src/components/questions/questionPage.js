@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import store, {addQuestionDB, getQuestion, getQuestions} from "../../store";
 import './questionsPage.css'
 import RichTextEditor from 'react-rte';
-import {Button, Input, Form, FormGroup, Card, CardHeader, CardFooter, CardTitle, CardText, CardBody, CardLink} from 'reactstrap';
+import {Button, Input, Form, FormGroup, Card, CardFooter, CardTitle, CardText, CardBody,
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem
+
+} from 'reactstrap';
 import {notify} from "react-notify-toast";
 import connect from "react-redux/es/connect/connect";
 import {Link} from "react-router-dom";
@@ -17,8 +25,9 @@ class QuestionsView extends Component {
             title : '',
             selectedQuestion : null,
             search : '',
+            isOpen : false
         }
-
+        this.toggle = this.toggle.bind(this);
         this.onChange = (value) => {
             this.setState({value : value});
             if (this.props.onChange) {
@@ -71,6 +80,11 @@ class QuestionsView extends Component {
             selectedQuestion : question
         })
         getQuestion(question.id, store.dispatch)
+    }
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
     }
     render() {
         let questions = [];
@@ -132,25 +146,26 @@ class QuestionsView extends Component {
         }
         return (
             <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                 <a className="navbar-brand" onClick={this.cancelSelectionQuestion}>Forum</a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon" />
-                </button>
-
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav mr-auto">
-                    </ul>
-                    <form className="form-inline my-2 my-lg-0">
-                        {this.props.questions.Reducer.user ? <button className="btn btn-success my-2 my-sm-0" onClick={this.addQuestion}>Add question</button> : <Link class="nav-link" to='/login'>  <Button className="btn btn-success my-2 my-sm-0">Login / Add question</Button></Link> }
-                    </form>
-                    <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value={this.state.search} onChange={this.onChangeSearch} />
-                    </form>
-                </div>
-            </nav>
+                <Navbar color="light" light expand="md">
+                    <NavbarBrand onClick={this.cancelSelectionQuestion}>
+                        Forum
+                    </NavbarBrand>
+                    <NavbarToggler onClick={this.toggle} />
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                            <NavItem>
+                                <form className="form-inline my-2 my-lg-0">
+                                    {this.props.questions.Reducer.user ? <button className="btn btn-success my-2 my-sm-0" onClick={this.addQuestion}>Add question</button> :  <Link className="btn btnLogin btn-success my-2 my-sm-0" to='/login'> Login / Add question</Link> }
+                                </form>
+                            </NavItem>
+                            <NavItem>
+                                <form className="form-inline my-2 my-lg-0">
+                                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value={this.state.search} onChange={this.onChangeSearch} />
+                                </form>
+                            </NavItem>
+                        </Nav>
+                    </Collapse>
+                </Navbar>
                 {this.state.addQuestion ? <div className='containerType'>
                         <Form>
                             <FormGroup>

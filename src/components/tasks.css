@@ -497,6 +497,6 @@ label, .btn, .alert, input::placeholder, input
     font-family: 'Libre Barcode 128 Text', cursive!important;
 }
 
-a{
+.aLink{
     color : #e83e8c!important;
 }

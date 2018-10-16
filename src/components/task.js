@@ -96,18 +96,18 @@ class Tasks extends Component {
 
                             References :<br /><br />
 
-                            <b> Designs for Leaderboard </b> : <a target="_blank" href='https://dribbble.com/tags/leaderboard'> click here</a><br /><br />
+                            <b> Designs for Leaderboard </b> : <a className={'aLink'} target="_blank" href='https://dribbble.com/tags/leaderboard'> click here</a><br /><br />
 
                             <b> PHP references</b>  : <br />
-                            1. PHP Intro : <a target="_blank" href='https://www.w3schools.com/php/php_intro.asp'> click here </a><br />
-                            2. PHP Mysql db : <a target="_blank" href='https://www.w3schools.com/php/php_mysql_intro.asp'> click here </a><br />
-                            3. PHP CRM example : <a target="_blank" href='https://medium.freecodecamp.org/building-a-simple-crm-from-scratch-in-php-58fef061b075'>click here</a><br /><br />
+                            1. PHP Intro : <a className={'aLink'} target="_blank" href='https://www.w3schools.com/php/php_intro.asp'> click here </a><br />
+                            2. PHP Mysql db : <a className={'aLink'} target="_blank" href='https://www.w3schools.com/php/php_mysql_intro.asp'> click here </a><br />
+                            3. PHP CRM example : <a className={'aLink'} target="_blank" href='https://medium.freecodecamp.org/building-a-simple-crm-from-scratch-in-php-58fef061b075'>click here</a><br /><br />
 
 
                             <b> NODE JS references</b><br />
-                            1. NODE JS intro (deep): <a target='_blank' href='https://medium.freecodecamp.org/getting-off-the-ground-with-expressjs-89ada7ef4e59'>click here</a><br />
-                            2. NODE JS intro (short): <a target='_blank' href='https://medium.com/javascript-scene/introduction-to-node-express-90c431f9e6fd'>click here</a><br />
-                            3. NODE JS with mysql: <a target='_blank' href='https://medium.com/@avanthikameenakshi/building-restful-api-with-nodejs-and-mysql-in-10-min-ff740043d4be'>click here</a><br />
+                            1. NODE JS intro (deep): <a className={'aLink'} target='_blank' href='https://medium.freecodecamp.org/getting-off-the-ground-with-expressjs-89ada7ef4e59'>click here</a><br />
+                            2. NODE JS intro (short): <a className={'aLink'} target='_blank' href='https://medium.com/javascript-scene/introduction-to-node-express-90c431f9e6fd'>click here</a><br />
+                            3. NODE JS with mysql: <a className={'aLink'} target='_blank' href='https://medium.com/@avanthikameenakshi/building-restful-api-with-nodejs-and-mysql-in-10-min-ff740043d4be'>click here</a><br />
 
 
 
@@ -144,9 +144,9 @@ class Tasks extends Component {
                             5. Create a unique qr for every person and show it in both profile and view details.<br /><br />
 
                             Refer : <br />
-                            1. <a href='https://medium.com/@prmeister89/getting-started-with-react-8d67e2adc4df'>Getting started with react</a><br />
-                            2. <a href='https://hackernoon.com/getting-started-with-react-redux-1baae4dcb99b'>Getting started with react and redux</a><br />
-                            3. <a href='https://www.codementor.io/vijayst/using-firebase-with-redux-for-building-a-react-app-du1086puw'>Getting started with react, redux and firebase</a><br />
+                            1. <a className={'aLink'} href='https://medium.com/@prmeister89/getting-started-with-react-8d67e2adc4df'>Getting started with react</a><br />
+                            2. <a className={'aLink'} href='https://hackernoon.com/getting-started-with-react-redux-1baae4dcb99b'>Getting started with react and redux</a><br />
+                            3. <a className={'aLink'} href='https://www.codementor.io/vijayst/using-firebase-with-redux-for-building-a-react-app-du1086puw'>Getting started with react, redux and firebase</a><br />
 
                             <b>** The upload button would show up at 4pm on October 8th. All the best **</b><br />
                         </p>
@@ -187,7 +187,7 @@ class Tasks extends Component {
                             Every stage should be a pull request to the module.<br /><br />
 
                             Refer : <br />
-                            1. <a href='https://github.com/harshithmullapudi/emoji-picker'>Here you have example task to make emoji picker can try using the code.</a><br />
+                            1. <a className={'aLink'} href='https://github.com/harshithmullapudi/emoji-picker'>Here you have example task to make emoji picker can try using the code.</a><br />
 
 
                         </p>

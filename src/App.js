@@ -3,11 +3,6 @@ import logo from './assets/logo.png';
 import './App.css';
 import { Router, Route} from 'react-router-dom';
 import ListView from './components/ListView';
-import {
-    Navbar,
-    Nav,
-    NavItem,
-} from 'reactstrap';
 import * as firebase from './firebase';
 import {Link} from 'react-router-dom'
 import Provider from "react-redux/es/components/Provider";
@@ -19,16 +14,28 @@ import Notifications from 'react-notify-toast';
 import {signOut} from './store'
 import ProfileView from "./components/afterLogin/profileView";
 import QuestionsView from "./components/questions/questionPage";
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+ } from 'reactstrap';
+import ChatView from "./components/afterLogin/chat";
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             authUser: null,
+            isOpen: false
         };
+        this.toggle = this.toggle.bind(this);
     }
 
     componentDidMount() {
+
         firebase.auth.onAuthStateChanged(authUser => {
             authUser
                 ? this.setState({ authUser })
@@ -38,6 +45,11 @@ class App extends Component {
         watchTaskChangedEvent(store.dispatch);
 
     }
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
   render() {
     return (
         <Provider store={store}>
@@ -46,19 +58,25 @@ class App extends Component {
             <main>
                 <Notifications/>
                 <Navbar color="light" light expand="md">
+                    <NavbarBrand>
                         <Link class='navbar-brand' href="/" to="/" > <img src={logo}  width="200" height="auto" alt=""/></Link>
-                    <Nav className="ml-auto" navbar>
-                        <NavItem >
+                    </NavbarBrand>
+                    <NavbarToggler onClick={this.toggle} />
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                            <NavItem >
                             <Link class="nav-link" to='/leaderboard'>Leaderboard</Link>
-                        </NavItem>
-                        <NavItem >
+                            </NavItem>
+                            <NavItem >
                             <Link class="nav-link" to='/tasks'>Tasks</Link>
-                        </NavItem>
-                        { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/login'>Login</Link> </NavItem>  : ''}
-                        { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/add'>Register</Link></NavItem> : ''}
-                        { this.state.authUser ?  <NavItem> <Link class="nav-link" to='/profile'>Profile</Link></NavItem> : ''}
-                        { this.state.authUser ?  <NavItem> <Link to='/' class="nav-link" onClick={signOut}> Log out</Link></NavItem> : ''}
-                    </Nav>
+                            </NavItem>
+                            { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/login'>Login</Link> </NavItem>  : ''}
+                            { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/add'>Register</Link></NavItem> : ''}
+                            { this.state.authUser ?  <NavItem> <Link class="nav-link" to='/profile'>Profile</Link></NavItem> : ''}
+                            { this.state.authUser ?  <NavItem> <Link class="nav-link" to='/chat'>Chat Room</Link></NavItem> : ''}
+                            { this.state.authUser ?  <NavItem> <Link to='/' class="nav-link" onClick={signOut}> Log out</Link></NavItem> : ''}
+                        </Nav>
+                    </Collapse>
                 </Navbar>
                     <div className="card main">
                         <Route exact path="/" component={QuestionsView} />
@@ -66,6 +84,7 @@ class App extends Component {
                         <Route exact path="/tasks" component={Tasks} />
                         <Route exact path="/login" component={LoginView} />
                         <Route exact path="/profile" component={ProfileView} />
+                        <Route exact path="/chat" component={ChatView} />
                         <Route exact path="/leaderboard" component={ListView} />
                     </div>
             </main>
