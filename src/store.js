@@ -39,7 +39,7 @@ export function getRecordsThunk() {
   return dispatch => {
     database.ref(`data`).orderByChild('points').on('value', snap => {
         let values = Object.keys(snap.val()).map(k => {
-          if(snap.val()[k].verified) {
+          if(snap.val()[k]) {
               let temp = snap.val()[k];
               temp["key"] = k;
              return  temp;
@@ -109,14 +109,15 @@ export function getQuestions() {
 export function getChats() {
 
   return dispatch => {
-    database.ref('/chat/').limitToLast(12).on('value',snap => {
+    database.ref('/chat').limitToLast(12).on('value',snap => {
+
         if(snap.val()) {
           let values = Object.keys(snap.val()).map(k => {
+
               return snap.val()[k];
           });
-          values = values.filter(k => k);
           setTimeout(() => {
-            dispatch(getChatsDispatch(values))
+            dispatch(getChatsDispatch(values.sort((a,b) => a.added - b.added)))
           }, 1);
         }
     })
@@ -151,7 +152,7 @@ export function addQuestionDB(title, description)
 export function addChatDB(content)
 {
     let id = Math.floor(Math.random()*90000) + 10000;
-   return database.ref("chat/"+ id ).push({
+   return database.ref("chat/"+ id ).set({
        id : id,
         description : content,
         by : store.getState().Reducer.user.email,
@@ -292,7 +293,7 @@ function Reducer (state = { records : [], questions : [], user : null, question 
     case GET_RECORDS:
       return { 'records' : action.records, "user" : state.user,  "questions" : state.questions , "question" : state.question};
     case GET_CHAT:
-      return { 'records' : action.records, "user" : state.user, "chats" : action.chats};
+      return { 'records' : state.records, "user" : state.user, "chats" : action.chats};
     case SET_QUESTON:
           return { 'records' : state.records, "user" : state.user,  "questions" : state.questions , "question" : action.question};
     case UPDATE_USER:
