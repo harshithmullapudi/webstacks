@@ -5,8 +5,12 @@
   "dependencies": {
     "bootstrap": "^4.0.0",
     "date-input-polyfill": "^2.14.0",
+<<<<<<< HEAD
     "emoji-picker-react": "^2.1.1",
     "firebase": "^4.11.0",
+=======
+    "firebase": "^5.5.4",
+>>>>>>> 43924183cd2402c30245612cee33142021818cb4
     "history": "^4.7.2",
     "is-github-url": "^1.2.2",
     "qrcode.react": "^0.8.0",
@@ -22,11 +26,11 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "react-rte": "^0.16.1",
-    "react-scripts": "1.1.1",
+    "react-scripts": "2.0.4",
     "react-select": "^2.0.0",
     "react-transition-group": "^2.2.1",
-    "reactstrap": "^5.0.0-alpha.4",
-    "redux": "^3.7.2",
+    "reactstrap": "^6.5.0",
+    "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.2",
     "redux-reset": "^0.3.0",
     "redux-thunk": "^2.2.0",
@@ -39,17 +43,23 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "description": "A website designed for the club (Web development) to make the learning process much easier and also competitive.",
   "main": "index.js",
   "devDependencies": {},
   "author": "",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Arav1nd2/webstacks-1.git"
+    "url": "git+https://github.com/harshithmullapudi/webstacks"
   },
   "bugs": {
-    "url": "https://github.com/Arav1nd2/webstacks-1/issues"
+    "url": "https://github.com/harshithmullapudi/webstacks/issues"
   },
-  "homepage": "https://github.com/Arav1nd2/webstacks-1#readme"
+  "homepage": "https://github.com/harshithmullapudi/webstacks#readme",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

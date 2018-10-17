@@ -55,9 +55,10 @@ class AddView extends Component {
 
     componentDidMount() {
         firebase.auth.onAuthStateChanged(authUser => {
-            authUser
-                ? this.props.history.push('/')
-                : '';
+            if(authUser)
+            {
+                this.props.history.push('/')
+            }
         });
     }
     render() {

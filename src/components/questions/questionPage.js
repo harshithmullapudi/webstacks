@@ -118,7 +118,7 @@ class QuestionsView extends Component {
                         </CardBody>
                         <CardFooter>
                             <small>by <b>{question.name}</b></small>
-                            { Object.keys(question.comments).map(k => question.comments[k]).length ?  <p className='float-right'><b> {Object.keys(question.comments).map(k => question.comments[k]).length} Comments </b></p> : '' }
+                            { question.comments && Object.keys(question.comments).map(k => question.comments[k]).length ?  <p className='float-right'><b> {Object.keys(question.comments).map(k => question.comments[k]).length} Comments </b></p> : '' }
                         </CardFooter>
                     </Card>
                 )
