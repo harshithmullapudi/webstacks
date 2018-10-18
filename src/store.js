@@ -149,13 +149,14 @@ export function addQuestionDB(title, description)
     })
 }
 // Added a function to add the chat in db
-export function addChatDB(content)
+export function addChatDB(content,imgUrl)
 {
     let id = Math.floor(Math.random()*90000) + 10000;
    return database.ref("chat/"+ id ).set({
        id : id,
         description : content,
         by : store.getState().Reducer.user.email,
+        imgUrl: imgUrl,
         name : store.getState().Reducer.user.name.first +" "+ store.getState().Reducer.user.name.last ,
        added : (new Date()).getTime(),
        pic : store.getState().Reducer.user.photo.type,

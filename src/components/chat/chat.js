@@ -1,11 +1,14 @@
 import React from 'react';
 import connect from "react-redux/es/connect/connect";
 import store, {checkUser, updateUser, addChatDB, getChats} from "../../store";
-import {Button, Input, Form, FormGroup, Card, CardHeader, CardFooter, CardTitle, CardText, CardBody, CardLink,Container, Row, Col, Table} from 'reactstrap';
-import {database} from '../../firebase';
+import {Button,Form, FormGroup, Card, CardHeader, CardFooter, CardTitle, CardText, CardBody, CardLink,Container, Row, Col, Table,InputGroup, InputGroupAddon, InputGroupText, Input} from 'reactstrap';
+import {database,storage} from '../../firebase';
 import './chat.css';
 import EmojiPicker from 'emoji-picker-react';
 import emojiButton from '../../assets/emoji.png';
+import successImg from '../../assets/success.png';
+import firebase from 'firebase';
+import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
 function importAll(r) {
     let images = {};
     r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
@@ -20,11 +23,16 @@ class Chat extends React.Component {
 	constructor(props) {
 		super(props);
 		this.messagesEnd = React.createRef();
+		this.fileUploader = React.createRef();
 		this.state = {
 			comment : "",
-			emojiButton : false,
 			listState : false,
-			search : ''
+			search : '',
+			imgUrl : '',
+			uploadState : false,
+			progress : 0,
+			addButtonState : false
+
 		}
 		this.handleChange = (e) => {
 			if(e.target.value.includes('@'))
@@ -39,11 +47,19 @@ class Chat extends React.Component {
 		}
 		this.handleClick = (e) => {
 			e.preventDefault();
-			if(this.state.comment !== "")
-			addChatDB(this.state.comment);
-		
+			if(this.state.comment !== "" )
+			{
+				if(this.state.uploadState && this.state.progress === 100)
+					addChatDB(this.state.comment,this.state.imgUrl);
+				else
+					addChatDB(this.state.comment,"");
+			}
 			this.setState({
-				comment : ""
+				comment : "",
+				imgUrl : "",
+				uploadState : false,
+				progress : 0,
+				addButtonState : false
 			});
 		}
 		this.scrollToBottom = () => {
@@ -58,14 +74,20 @@ class Chat extends React.Component {
 			{
 				if(e.key === "Escape")
 					this.setState({	listState : false});
-
 			}
-	
 		}
-		this.myCallback = () => {
-			this.setState ({emojiButton : !this.state.emojiButton});
+		this.uploadSuccess = (filename) => {
+			this.setState({ progress: 100 });
+			storage.ref('images').child(filename).getDownloadURL().then(url => this.setState({imgUrl : url ,uploadState : true}));
+			this.handleClick;
 		}
-
+		this.handleProgress = (progress) => {
+			this.setState({progress})
+		}
+		this.addButtonHandler = () => {
+			this.setState({ addButtonState : true})
+		}
+		
 	}
 	handleTagname(name)  {
 			let newComment = this.state.comment;
@@ -84,7 +106,7 @@ class Chat extends React.Component {
   		this.scrollToBottom();
 	}
 
-	render() {
+	render() { 
 		let suggestion = [];
 		if(this.props.chats.Reducer.records)
 		{
@@ -93,7 +115,7 @@ class Chat extends React.Component {
 			{
 				if(this.state.search === ''  || (this.props.chats.Reducer.records[j]["name"]["first"].toLowerCase().includes(this.state.search.toLowerCase())) ||  (this.props.chats.Reducer.records[j]["name"]["last"].toLowerCase().includes(this.state.search.toLowerCase()))) {			
 					suggestion.push(
-					<Row id = {j} className = "hover" onClick = {this.handleTagname.bind(this,this.props.chats.Reducer.records[j]["name"]["first"]+" "+this.props.chats.Reducer.records[j]["name"]["last"])}>
+					<Row id = {j} className = "chat-2 hover" onClick = {this.handleTagname.bind(this,this.props.chats.Reducer.records[j]["name"]["first"]+" "+this.props.chats.Reducer.records[j]["name"]["last"])}>
 						<Col className="image" sm = "4">
 			            	<img src={this.props.chats.Reducer.records[j]["photo"]["type"] === 'boys' ? boys[this.props.chats.Reducer.records[j]["photo"]["number"] + '.svg'] : girls[this.props.chats.Reducer.records[j]["photo"]["number"] + '.svg']} className="rounded-circle align-self-end mr-3 profilepic"   />
 			            </Col>
@@ -121,7 +143,7 @@ class Chat extends React.Component {
 			                        	<Col className="list-text" sm = "3">
 			                          		<b>{this.props.chats.Reducer.chats[i]["name"]}</b><br/>
 			                          		{this.props.chats.Reducer.chats[i]["description"]}
-
+											{this.props.chats.Reducer.chats[i]["imgUrl"] !== "" ? <div><br/><img src = {this.props.chats.Reducer.chats[i]["imgUrl"]} height ="200px" width ="200px" /></div> : ""}
 			                        	</Col>
 			                		</Row>
 									);
@@ -136,6 +158,7 @@ class Chat extends React.Component {
 			                        <Col className="list-text" sm = "3">
 			                          <h6><b>{this.props.chats.Reducer.chats[i]["name"]}</b></h6>
 			                          {this.props.chats.Reducer.chats[i]["description"]}
+			                        	{this.props.chats.Reducer.chats[i]["imgUrl"] !== "" ? <div><br/><img src = {this.props.chats.Reducer.chats[i]["imgUrl"]} height ="200px" width ="200px" /></div> : ""}
 			                        </Col>
 			                        <Col sm ="8"></Col>
 			                </Row>
@@ -147,7 +170,7 @@ class Chat extends React.Component {
 		}	
 		return (
 			<div>
-				
+				<Row className = "chat">
 				<Card className = "maincard scroll">
 					<CardBody>
 						{content}
@@ -156,12 +179,42 @@ class Chat extends React.Component {
         				</div>
 					</CardBody>
 				</Card>
-				<div className="buttonWrapper">
-					<form onSubmit = {this.handleClick} >
-					<input className = "search-bottom" type ="text" placeholder = "Enter the text here" value = {this.state.comment} onChange = {this.handleChange} onKeyUp = {this.handleTag}/>
+				</Row>
+				<Row className = "chat">
+				<Col sm = "2" style ={{top :"30px", paddingLeft:"165px", paddingRigth:"0px", height:"40px"}}>
+				{this.state.listState ? <div className="suggestion scroll-2">{suggestion}<div style={{ float:"left", clear: "both" }} ref={(el) => { this.messagesEnd = el; }}></div></div> : ""}
+				{this.state.addButtonState && !this.state.imgUrl ? this.state.progress + "%" : ""}
+				{this.state.imgUrl ? <img src = {successImg} width="20px" height="20px" /> : ""}
+				</Col>
+				<Col sm =  "10" >
+				<InputGroup style = {{height:"40px"}}>
+					<InputGroupAddon addonType = "prepend" >
+					<InputGroupText className="button-add" >
+					<CustomUploadButton
+	    				accept="image/*"
+	    				randomizeFilename
+	    				storageRef={storage.ref('images')}
+	    				onUploadSuccess={this.uploadSuccess}
+	    				onProgress={this.handleProgress}
+	 					onClick = {this.addButtonHandler}
+	 					style = {{ marginBottom : "0px"}}
+	 					>
+	    				+
+	  				</CustomUploadButton>
+	  				</InputGroupText>
+	  				</InputGroupAddon>
+	  				<InputGroupAddon addonType = "prepend" >	
+					<InputGroupText className="button-add">
+	  				<img src = {emojiButton} width="20px" height ="20px" />
+					</InputGroupText>
+					</InputGroupAddon>
+					<form onSubmit = {this.handleClick}>
+					<Input type ="text" placeholder = "Enter the text here" value = {this.state.comment} onChange = {this.handleChange} onKeyUp = {this.handleTag} style={{width:"430%"}}/>
 					</form>
-				</div>
-				{this.state.listState ? <div className="suggestion">{suggestion}</div> : ""}
+				</InputGroup>	
+				</Col>
+				</Row>
+				
 				
 			</div>
 			
