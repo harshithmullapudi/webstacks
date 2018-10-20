@@ -2,18 +2,15 @@ import firebase from 'firebase'
 
 
 const config = {
-    "apiKey": "AIzaSyDSr3xqO6BtDPfjD8k5QF6VcpXs1VKLRs4",
-    "authDomain": "myapp-a123c.firebaseapp.com",
-    "databaseURL": "https://myapp-a123c.firebaseio.com",
-    "projectId": "myapp-a123c",
-    "storageBucket": "myapp-a123c.appspot.com",
-    "messagingSenderId": "780709071980"
+  apiKey: "AIzaSyASM7_S1Vd2IgMZ2cLHhbVHs_GpN98CmsU",
+  authDomain: "webstacks-chat.firebaseapp.com",
+  databaseURL: "https://webstacks-chat.firebaseio.com",
+  projectId: "webstacks-chat",
+  storageBucket: "webstacks-chat.appspot.com",
+  messagingSenderId: "521821179459"
 };
 firebase.initializeApp(config);
 
 export const database = firebase.database()
 export const auth = firebase.auth()
-
-
-
-
+export const storage = firebase.storage()

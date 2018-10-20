@@ -1,0 +1,178 @@
+.chat-component {
+  overflow: auto;
+}
+.chat-room {
+  margin: auto;
+  width: 100%;
+  min-width: 1000px;
+  height: 90vh;
+  min-height: 500px;
+  display: flex;
+}
+
+.sidebar {
+  width: 25%;
+  background-color: #eae3ea;
+  padding: 1rem;
+  font-size: 1.05rem;
+}
+
+.chat-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 75%;
+}
+
+.chat-block-header {
+  padding: 1rem;
+  font-size: 15px;
+  color: #333;
+  border-bottom: 1px solid #bbb;
+}
+
+.chat-block-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 0rem 1rem;
+  max-height: 460px;
+  overflow: auto;
+}
+
+.message-block {
+  padding: 1rem;
+}
+
+.message-sender {
+  font-size: 0.85rem;
+  color: #af5a50;
+  margin-bottom: 6px;
+  padding-left: 5px;
+}
+
+.message-text-container {
+  margin-bottom: 1.2rem;
+  border-radius: 8px;
+  background: #b56357;
+  color:white;
+  display: inline-block;
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
+}
+
+.message-text {
+  font-size: 1.1rem;
+}
+
+.send-message-box {
+  margin-bottom: 1rem;
+  padding: 0rem 1rem 1rem 1rem;
+  height: 5%;
+}
+
+.send-message-box-input > div {
+  margin: 10px 10px 10px 10px;
+}
+
+.input-area {
+  width: 50%;
+}
+
+.send-box {
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  margin: auto 3px;
+  box-sizing: border-box;
+  font-size: 18px;
+  padding: 10px 8px;
+  outline: 0;
+  width: 68%;
+  display: inline-block ;
+}
+
+.clickable-icon {
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  margin: auto 3px;
+  padding: 10px 8px;
+  height: 49px;
+
+}
+
+.send-icon {
+  border: 2px solid green;
+  border-radius: 4px;
+  margin: 0px 3px;
+  padding: 10px 8px;
+  height: 49px;
+}
+
+.send-icon:hover {
+  border: 1px solid #bbb;
+  transition: .1s;
+}
+
+.hover-style:hover {
+  border-color: orange;
+  transition: .1s;
+  cursor: pointer;
+}
+
+.upload {
+  margin: 5px;
+}
+
+.file-upload-progress {
+  padding:5px;
+}
+
+.attachment {
+  background: white;
+  border-radius: 5px;
+  padding: 5px;
+  color: black;
+  font-weight: bold;
+}
+
+.attachment:hover {
+  cursor: pointer;
+}
+
+.attachment-in-chat {
+  height: 20px;
+}
+
+
+/* CSS for MentionsInput component */
+.mention-box {
+  height: 100%;
+  width: 100%;
+}
+.mention-box__control {
+  display: inline-block;
+}
+.mention-box__suggestions {
+  top: auto!important;
+}
+.mention-box__suggestions__list {
+  border: 1px solid rgba(0,0,0,0.15);
+}
+.mention-box__suggestions__item {
+  padding: 5px 15px;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+.mention-box__suggestions__item--focused {
+  background: #cee4e5;
+}
+.mention-box__input {
+  width: 100%!important;
+  height: 100%!important;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-size: 18px;
+  padding: 10px 8px;
+  margin: 0;
+}
+.mention-box__input:hover {
+  border-color: orange;
+  transition: .1s;
+}
