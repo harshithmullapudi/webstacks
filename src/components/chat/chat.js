@@ -5,6 +5,8 @@ import {Button,Form, FormGroup, Card, CardHeader, CardFooter, CardTitle, CardTex
 import {database,storage} from '../../firebase';
 import './chat.css';
 import EmojiPicker from 'emoji-picker-react';
+import 'emoji-mart/css/emoji-mart.css';
+import { Picker,Emoji } from 'emoji-mart';
 import emojiButton from '../../assets/emoji.png';
 import successImg from '../../assets/success.png';
 import firebase from 'firebase';
@@ -31,7 +33,8 @@ class Chat extends React.Component {
 			imgUrl : '',
 			uploadState : false,
 			progress : 0,
-			addButtonState : false
+			addButtonState : false,
+			emojiState : false
 
 		}
 		this.handleChange = (e) => {
@@ -86,6 +89,20 @@ class Chat extends React.Component {
 		}
 		this.addButtonHandler = () => {
 			this.setState({ addButtonState : true})
+		}
+		this.handleEmojiSelect = () => {
+			this.setState({ emojiState : !this.state.emojiState })
+		}
+		this.handleEmoji = (e) => {
+			console.log(e);
+			let emoji="";
+			if("0x"+e.unified !== NaN){
+					emoji = String.fromCodePoint("0x"+e.unified);
+					}
+			let newComment = this.state.comment + emoji ;
+			this.setState({
+				comment : newComment
+			});
 		}
 		
 	}
@@ -187,7 +204,7 @@ class Chat extends React.Component {
 				{this.state.imgUrl ? <img src = {successImg} width="20px" height="20px" /> : ""}
 				</Col>
 				<Col sm =  "10" >
-				<InputGroup style = {{height:"40px"}}>
+				<InputGroup>
 					<InputGroupAddon addonType = "prepend" >
 					<InputGroupText className="button-add" >
 					<CustomUploadButton
@@ -205,7 +222,7 @@ class Chat extends React.Component {
 	  				</InputGroupAddon>
 	  				<InputGroupAddon addonType = "prepend" >	
 					<InputGroupText className="button-add">
-	  				<img src = {emojiButton} width="20px" height ="20px" />
+	  				<img src = {emojiButton} width="20px" height ="20px" onClick = {this.handleEmojiSelect}/>
 					</InputGroupText>
 					</InputGroupAddon>
 					<form onSubmit = {this.handleClick}>
@@ -214,8 +231,14 @@ class Chat extends React.Component {
 				</InputGroup>	
 				</Col>
 				</Row>
-				
-				
+				<Row>
+				<Col sm = "12">
+				{this.state.emojiState ? <div>
+						<Picker native = {true} tooltip = {true} onSelect={this.handleEmoji} style={{ position: 'absolute', marginLeft : '16.8%' }} sheetSize = {32} showSkinTones = {false} defaultSkin = {1} title = "" showPreview = {false}/>
+
+					</div> : ""}
+				</Col>
+				</Row>
 			</div>
 			
 		);
