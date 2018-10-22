@@ -1,7 +1,7 @@
 import React from 'react';
 import connect from "react-redux/es/connect/connect";
 import store, {checkUser, updateUser, addChatDB, getChats} from "../../store";
-import {Button,Form, FormGroup, Card, CardHeader, CardFooter, CardTitle, CardText, CardBody, CardLink,Container, Row, Col, Table,InputGroup, InputGroupAddon, InputGroupText, Input} from 'reactstrap';
+import {Button,Form, FormGroup, Card, CardHeader, CardFooter, CardTitle, CardText, CardBody, CardLink,Container, Row, Col, Table,InputGroup, InputGroupAddon, InputGroupText, Input, Media} from 'reactstrap';
 import {database,storage} from '../../firebase';
 import './chat.css';
 import EmojiPicker from 'emoji-picker-react';
@@ -144,6 +144,9 @@ class Chat extends React.Component {
 			}
 			
 		}
+		var imgStyle = {
+			midWidth : "128px",
+		};
 		let content = [];
 		if(this.props.chats.Reducer.chats ) {
 			if(this.props.chats.Reducer.user)
@@ -152,34 +155,46 @@ class Chat extends React.Component {
 						{
 							if(this.props.chats.Reducer.chats[i]["name"] == (this.props.chats.Reducer.user.name.first + " " + this.props.chats.Reducer.user.name.last)) {
 								content.push(
+									<div>
 									<Row key={i} className = "chat">
-			                        	<Col sm = "8"> </Col>
-			                        	<Col className="image" sm = "1">
-			                          		<img src={this.props.chats.Reducer.chats[i]["pic"] === 'boys' ? boys[this.props.chats.Reducer.chats[i]["picid"] + '.svg'] : girls[this.props.chats.Reducer.chats[i]["picid"] + '.svg']} className="rounded-circle align-self-end mr-3 profilepic"   />
-			                        	</Col>
-			                        	<Col className="list-text" sm = "3">
-			                          		<b>{this.props.chats.Reducer.chats[i]["name"]}</b><br/>
-			                          		{this.props.chats.Reducer.chats[i]["description"]}
-											{this.props.chats.Reducer.chats[i]["imgUrl"] !== "" ? <div><br/><img src = {this.props.chats.Reducer.chats[i]["imgUrl"]} height ="200px" width ="200px" /></div> : ""}
-			                        	</Col>
+			                        	<Col md = "8" sm = "6"> </Col>
+			                        	<Media>
+			                        		<Media left href = "#">
+			                        			<Media width = "40px" object src = {this.props.chats.Reducer.chats[i]["pic"] === 'boys' ? boys[this.props.chats.Reducer.chats[i]["picid"] + '.svg'] : girls[this.props.chats.Reducer.chats[i]["picid"] + '.svg']} />
+			                        		</Media>
+			                        		<Media body>
+			                        			<Media heading style = {{fontSize : "1rem"}}>
+			                        				<b>{this.props.chats.Reducer.chats[i]["name"]}</b>
+			                        			</Media>
+			                        			{this.props.chats.Reducer.chats[i]["description"]}
+												{this.props.chats.Reducer.chats[i]["imgUrl"] !== "" ? <div><br/><img src = {this.props.chats.Reducer.chats[i]["imgUrl"]} height ="200px" width ="200px" /></div> : ""}	
+			                        		</Media>
+			                        	</Media>
 			                		</Row>
+			                		<br />
+			                		</div>
 									);
 							}
 							else
 							{
 								content.push(
+								<div>
 								<Row key={i} className = "chat">
-			                       <Col className="image" sm = "1">
-			                          <img src={this.props.chats.Reducer.chats[i]["pic"] === 'boys' ? boys[this.props.chats.Reducer.chats[i]["picid"] + '.svg'] : girls[this.props.chats.Reducer.chats[i]["picid"] + '.svg']} className="rounded-circle align-self-end mr-3 profilepic"   />
-			                        </Col>
-			                        <Col className="list-text" sm = "3">
-			                          <h6><b>{this.props.chats.Reducer.chats[i]["name"]}</b></h6>
-			                          {this.props.chats.Reducer.chats[i]["description"]}
-			                        	{this.props.chats.Reducer.chats[i]["imgUrl"] !== "" ? <div><br/><img src = {this.props.chats.Reducer.chats[i]["imgUrl"]} height ="200px" width ="200px" /></div> : ""}
-			                        </Col>
-			                        <Col sm ="8"></Col>
-			                </Row>
-			
+			                       <Media>
+			                        	<Media left middle href = "#">
+			                        		<Media width = "40px" object src = {this.props.chats.Reducer.chats[i]["pic"] === 'boys' ? boys[this.props.chats.Reducer.chats[i]["picid"] + '.svg'] : girls[this.props.chats.Reducer.chats[i]["picid"] + '.svg']} />
+			                        	</Media>
+			                        	<Media body>
+			                        		<Media heading style = {{fontSize : "1rem"}}>
+			                        			<b>{this.props.chats.Reducer.chats[i]["name"]}</b>
+			                        		</Media>
+			                        			{this.props.chats.Reducer.chats[i]["description"]}
+												{this.props.chats.Reducer.chats[i]["imgUrl"] !== "" ? <div><br/><img src = {this.props.chats.Reducer.chats[i]["imgUrl"]} height ="200px" width ="200px" /></div> : ""}	
+			                        	</Media>
+			                        </Media>
+								</Row>
+								<br />
+								</div>
 								);
 							}
 						}
@@ -198,13 +213,11 @@ class Chat extends React.Component {
 				</Card>
 				</Row>
 				<Row className = "chat">
-				<Col sm = "2" style ={{top :"30px", paddingLeft:"165px", paddingRigth:"0px", height:"40px"}}>
+				<Col>
 				{this.state.listState ? <div className="suggestion scroll-2">{suggestion}<div style={{ float:"left", clear: "both" }} ref={(el) => { this.messagesEnd = el; }}></div></div> : ""}
 				{this.state.addButtonState && !this.state.imgUrl ? this.state.progress + "%" : ""}
 				{this.state.imgUrl ? <img src = {successImg} width="20px" height="20px" /> : ""}
-				</Col>
-				<Col sm =  "10" >
-				<InputGroup>
+				<InputGroup className = "inputgroup">
 					<InputGroupAddon addonType = "prepend" >
 					<InputGroupText className="button-add" >
 					<CustomUploadButton
@@ -216,7 +229,7 @@ class Chat extends React.Component {
 	 					onClick = {this.addButtonHandler}
 	 					style = {{ marginBottom : "0px"}}
 	 					>
-	    				+
+	    				<b>+</b>
 	  				</CustomUploadButton>
 	  				</InputGroupText>
 	  				</InputGroupAddon>
@@ -225,16 +238,16 @@ class Chat extends React.Component {
 	  				<img src = {emojiButton} width="20px" height ="20px" onClick = {this.handleEmojiSelect}/>
 					</InputGroupText>
 					</InputGroupAddon>
-					<form onSubmit = {this.handleClick}>
-					<Input type ="text" placeholder = "Enter the text here" value = {this.state.comment} onChange = {this.handleChange} onKeyUp = {this.handleTag} style={{width:"430%"}}/>
+					<form className = "form" onSubmit = {this.handleClick}>
+					<Input type ="text" placeholder = "Enter the text here" value = {this.state.comment} onChange = {this.handleChange} onKeyUp = {this.handleTag} />
 					</form>
 				</InputGroup>	
 				</Col>
 				</Row>
 				<Row>
-				<Col sm = "12">
-				{this.state.emojiState ? <div>
-						<Picker native = {true} tooltip = {true} onSelect={this.handleEmoji} style={{ position: 'absolute', marginLeft : '16.8%' }} sheetSize = {32} showSkinTones = {false} defaultSkin = {1} title = "" showPreview = {false}/>
+				<Col sm = "12" className = "chat">
+				{this.state.emojiState ? <div className = "emojipicker">
+						<Picker native = {true} tooltip = {true} onSelect={this.handleEmoji} sheetSize = "16" showSkinTones = {false} defaultSkin = {1} title = "" showPreview = {false}/>
 
 					</div> : ""}
 				</Col>
