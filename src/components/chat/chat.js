@@ -133,20 +133,20 @@ class Chat extends React.Component {
 				if(this.state.search === ''  || (this.props.chats.Reducer.records[j]["name"]["first"].toLowerCase().includes(this.state.search.toLowerCase())) ||  (this.props.chats.Reducer.records[j]["name"]["last"].toLowerCase().includes(this.state.search.toLowerCase()))) {			
 					suggestion.push(
 					<Row id = {j} className = "chat-2 hover" onClick = {this.handleTagname.bind(this,this.props.chats.Reducer.records[j]["name"]["first"]+" "+this.props.chats.Reducer.records[j]["name"]["last"])}>
-						<Col className="image" sm = "4">
-			            	<img src={this.props.chats.Reducer.records[j]["photo"]["type"] === 'boys' ? boys[this.props.chats.Reducer.records[j]["photo"]["number"] + '.svg'] : girls[this.props.chats.Reducer.records[j]["photo"]["number"] + '.svg']} className="rounded-circle align-self-end mr-3 profilepic"   />
-			            </Col>
-			            <Col className = "list-text" sm ="8">
-							{this.props.chats.Reducer.records[j]["name"]["first"]+" "+this.props.chats.Reducer.records[j]["name"]["last"]}
-			            </Col>
+						<Media>
+							<Media left href = "#">
+								<Media width = "30px" object src = {this.props.chats.Reducer.records[j]["photo"]["type"] === 'boys' ? boys[this.props.chats.Reducer.records[j]["photo"]["number"] + '.svg'] : girls[this.props.chats.Reducer.records[j]["photo"]["number"] + '.svg']} />
+							</Media>
+							<Media body>
+							{this.props.chats.Reducer.records[j]["name"]["first"]+" "+this.props.chats.Reducer.records[j]["name"]["last"]}	
+							</Media>
+						</Media>
 					</Row>);
 				}		
 			}
 			
 		}
-		var imgStyle = {
-			midWidth : "128px",
-		};
+
 		let content = [];
 		if(this.props.chats.Reducer.chats ) {
 			if(this.props.chats.Reducer.user)

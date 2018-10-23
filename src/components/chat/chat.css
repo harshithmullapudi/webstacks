@@ -8,6 +8,21 @@ div::-webkit-scrollbar {
   right:0%;
   width: 70%;
 }
+.suggestion {
+  position: absolute;
+  background-color: white; 
+  left:24%;
+  bottom: 58%;
+  width :20%;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding-left: 2%;
+  padding-top: 1%;
+  padding-bottom: 2%;
+}
 .inputgroup {
   margin-left: 17%
 }
@@ -23,6 +38,21 @@ div::-webkit-scrollbar {
   margin:auto;
   width :90%;
 }
+.suggestion {
+  position: absolute;
+  background-color: white; 
+  left:15%;
+  bottom: 58%;
+  width :40%;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding-left: 6%;
+  padding-top: 1%;
+  padding-bottom: 7%;
+}
 .inputgroup {
   margin-left: 3%
 }
@@ -37,7 +67,21 @@ div::-webkit-scrollbar {
 .form {
   width: 73%;
 }
-
+.suggestion {
+  position: absolute;
+  background-color: white; 
+  left:24%;
+  bottom: 55%;
+  width :67%;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding-left: 8%;
+  padding-top: 2%;
+  padding-bottom: 8%;
+}
 }
 .colsize {
   padding-left: 0px;
@@ -80,20 +124,7 @@ div::-webkit-scrollbar {
   padding-right: 0px;
   padding-left: 157px; 
 }
-.suggestion {
-  position: fixed;
-  background-color: white; 
-  left:23.2%;
-  bottom: 8%;
-  width :20%;
-  border-right: 1px solid black;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  padding-left: 2%;
-  padding-top: 1%;
-}
+
 .chat-2 {
   background-color: white;
   width:100%;
