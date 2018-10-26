@@ -1,6 +1,36 @@
 div::-webkit-scrollbar {
     width: 12px;
 }
+h6 {
+    overflow: hidden;
+    text-align: center;
+}
+h6:before,
+h6:after {
+    background-color: #c3c6cc;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+
+}
+h6:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+h6:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+.timeline {
+  color: #c3c6cc;
+}
+.time {
+  color: #c3c6cc;
+  font-size: 0.7rem;  
+}
 @media all and (min-width: 1000px) {
 .maincard {
   margin: auto;

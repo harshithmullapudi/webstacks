@@ -146,13 +146,30 @@ class Chat extends React.Component {
 			}
 			
 		}
-
+		var date = new Date();
+		var today = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
 		let content = [];
 		if(this.props.chats.Reducer.chats ) {
 			if(this.props.chats.Reducer.user)
-			{
+			{	var timeline = new Date(this.props.chats.Reducer.chats[0]["added"]);
+				var displayDate = timeline.getDate() + "/" + timeline.getMonth() + "/" + timeline.getFullYear();
+				content.push(<h6 className = "timeline">{displayDate}</h6>);
 				for(var i=0; i<this.props.chats.Reducer.chats.length; i++)
 						{
+							var commentDate = new Date(this.props.chats.Reducer.chats[i]["added"]);
+							var current = commentDate.getDate() + "/" + commentDate.getMonth() +  "/" + commentDate.getFullYear();
+							if(displayDate !== current) {
+								if(current === today) {
+									content.push(<h6 className = "timeline">Today</h6>);
+									displayDate = current;
+								}
+								else
+								{
+									content.push(<h6 className = "timeline">{current}</h6>);
+									displayDate = current;
+								}
+							}
+							var time = new Date(this.props.chats.Reducer.chats[i]["added"]).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
 							if(this.props.chats.Reducer.chats[i]["name"] == (this.props.chats.Reducer.user.name.first + " " + this.props.chats.Reducer.user.name.last)) {
 								content.push(
 									<div>
@@ -164,7 +181,7 @@ class Chat extends React.Component {
 			                        		</Media>
 			                        		<Media body>
 			                        			<Media heading style = {{fontSize : "1rem"}}>
-			                        				<b>{this.props.chats.Reducer.chats[i]["name"]}</b>
+			                        			<b>{this.props.chats.Reducer.chats[i]["name"]} <small className = "time"><i>{time}</i></small></b>			                        				
 			                        			</Media>
 			                        			{this.props.chats.Reducer.chats[i]["description"]}
 												{this.props.chats.Reducer.chats[i]["imgUrl"] !== "" ? <div><br/><img src = {this.props.chats.Reducer.chats[i]["imgUrl"]} height ="200px" width ="200px" /></div> : ""}	
@@ -186,7 +203,7 @@ class Chat extends React.Component {
 			                        	</Media>
 			                        	<Media body>
 			                        		<Media heading style = {{fontSize : "1rem"}}>
-			                        			<b>{this.props.chats.Reducer.chats[i]["name"]}</b>
+			                        			<b>{this.props.chats.Reducer.chats[i]["name"]} <small className = "time"><i>{time}</i></small></b>
 			                        		</Media>
 			                        			{this.props.chats.Reducer.chats[i]["description"]}
 												{this.props.chats.Reducer.chats[i]["imgUrl"] !== "" ? <div><br/><img src = {this.props.chats.Reducer.chats[i]["imgUrl"]} height ="200px" width ="200px" /></div> : ""}	
