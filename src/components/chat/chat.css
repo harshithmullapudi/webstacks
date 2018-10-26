@@ -1,0 +1,171 @@
+div::-webkit-scrollbar {
+    width: 12px;
+}
+h6 {
+    overflow: hidden;
+    text-align: center;
+}
+h6:before,
+h6:after {
+    background-color: #c3c6cc;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+
+}
+h6:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+h6:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+.timeline {
+  color: #c3c6cc;
+}
+.time {
+  color: #c3c6cc;
+  font-size: 0.7rem;  
+}
+@media all and (min-width: 1000px) {
+.maincard {
+  margin: auto;
+  left :3%;
+  right:0%;
+  width: 70%;
+}
+.suggestion {
+  position: absolute;
+  background-color: white; 
+  left:24%;
+  bottom: 58%;
+  width :20%;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding-left: 2%;
+  padding-top: 1%;
+  padding-bottom: 2%;
+}
+.inputgroup {
+  margin-left: 17%
+}
+.form {
+  width: 66%;
+}
+.emojipicker {
+  margin-left: 16.8%;
+}
+}
+@media all and (max-width: 1000px) {
+.maincard {
+  margin:auto;
+  width :90%;
+}
+.suggestion {
+  position: absolute;
+  background-color: white; 
+  left:15%;
+  bottom: 58%;
+  width :40%;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding-left: 6%;
+  padding-top: 1%;
+  padding-bottom: 7%;
+}
+.inputgroup {
+  margin-left: 3%
+}
+.form {
+  width: 85%;
+}
+.emojipicker {
+  margin-left: 3%;
+}
+}
+@media all and (max-width: 600px) {
+.form {
+  width: 73%;
+}
+.suggestion {
+  position: absolute;
+  background-color: white; 
+  left:24%;
+  bottom: 55%;
+  width :67%;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding-left: 8%;
+  padding-top: 2%;
+  padding-bottom: 8%;
+}
+}
+.colsize {
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 100px
+}
+.scroll {
+    max-height: 470px;
+    overflow-y: auto;
+}
+.scroll-2 {
+    max-height: 180px;
+    overflow-y: auto;
+}
+.list {
+  margin: 15px auto;
+  min-height: 100px;
+  background-color: #fff  ;
+  padding: 10px 10px;
+}
+.list-text {
+  padding-left: 0px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-right: 0px;
+  margin-left:0px;
+ 
+}
+.profilepic {
+  height: 60px;
+  width: 60px;
+  padding-right: 0px;
+  margin-right: 575px;
+}
+.chat {
+  background-color: white;
+}
+.progress {
+  margin-top: 32px;
+  padding-right: 0px;
+  padding-left: 157px; 
+}
+
+.chat-2 {
+  background-color: white;
+  width:100%;
+}
+.hover:hover {
+  transition: all .1s ease-in-out;
+  cursor: pointer;
+  transform: scale(1.001);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.button-add {
+  height:38px;
+  margin-top:30px;
+}
