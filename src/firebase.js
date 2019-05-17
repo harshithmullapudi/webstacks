@@ -2,12 +2,13 @@ import firebase from 'firebase'
 
 
 const config = {
-    "apiKey": "AIzaSyDSr3xqO6BtDPfjD8k5QF6VcpXs1VKLRs4",
-    "authDomain": "myapp-a123c.firebaseapp.com",
-    "databaseURL": "https://myapp-a123c.firebaseio.com",
-    "projectId": "myapp-a123c",
-    "storageBucket": "myapp-a123c.appspot.com",
-    "messagingSenderId": "780709071980"
+   apiKey: "AIzaSyCY11Klf4T_fXzfG_ScJWm1nqJBSvUwu1U",
+    authDomain: "webstacks-235e4.firebaseapp.com",
+    databaseURL: "https://webstacks-235e4.firebaseio.com",
+    projectId: "webstacks-235e4",
+    storageBucket: "webstacks-235e4.appspot.com",
+    messagingSenderId: "191997999591",
+    appId: "1:191997999591:web:71e7e776f3271d6a"
 };
 firebase.initializeApp(config);
 

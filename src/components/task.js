@@ -68,16 +68,16 @@ class Tasks extends Component {
 
                             Refer : w3schools for to practice html, css, js<br /><br />
 
-                           <b>** The upload button would show up at 4pm on September 13th. All the best **</b><br />
+                           {/*<b>** The upload button would show up at 4pm on September 13th. All the best **</b><br />*/}
                          </p>
                         {/*{this.state.task.indexOf(1) > -1 ?   <Alert color="success">*/}
                           {/*Submitted !! :) will get back soon*/}
                         {/*</Alert> : ''}*/}
-                      <Alert color="success">
+                      {/*<Alert color="success">
                        Results are out :)
-                        </Alert>
+                        </Alert>*/}
 
-                        <span className="cd-date">Sep 13</span>
+                        <span className="cd-date">May 15</span>
                     </div>
                 </div>
                 <div className="cd-timeline-block">
@@ -111,9 +111,9 @@ class Tasks extends Component {
 
 
 
-                            <Alert color="success">
+                           {/* <Alert color="success">
                                 Results are out :)
-                            </Alert>
+                            </Alert>*/}
 
                            {/*<br /><br /><b>** The upload button would show up at 4pm on September 20th. All the best **</b>*/}
                             {/*{this.state.task.indexOf(2) > -1 ?   <Alert color="success">*/}
@@ -125,7 +125,7 @@ class Tasks extends Component {
                             {/*{this.props.user.Reducer.user !== null && this.state.task.indexOf(2) < 0 && this.state.btnState ? <Button color="error" className='float-right margin' onClick={this.changeStateFalse}> Cancel </Button>: ''}*/}
 
                         </p>
-                        <span className="cd-date">Sep 20</span>
+                        <span className="cd-date">May 20</span>
                     </div>
                 </div>
                 <div className="cd-timeline-block">
@@ -148,7 +148,7 @@ class Tasks extends Component {
                             2. <a href='https://hackernoon.com/getting-started-with-react-redux-1baae4dcb99b'>Getting started with react and redux</a><br />
                             3. <a href='https://www.codementor.io/vijayst/using-firebase-with-redux-for-building-a-react-app-du1086puw'>Getting started with react, redux and firebase</a><br />
 
-                            <b>** The upload button would show up at 4pm on October 8th. All the best **</b><br />
+                            {/*<b>** The upload button would show up at 4pm on October 8th. All the best **</b><br />*/}
                         </p>
                         {/*{this.state.task.indexOf(1) > -1 ?   <Alert color="success">*/}
                         {/*Submitted !! :) will get back soon*/}
@@ -165,7 +165,7 @@ class Tasks extends Component {
                         {this.props.user.Reducer.user !== null && this.state.task.indexOf(3) < 0 && this.state.btnState ? <Button color="error" className='float-right margin' onClick={this.changeStateFalse}> Cancel </Button>: ''}
 
 
-                        <span className="cd-date">Oct 5</span>
+                        {/*<span className="cd-date">Oct 5</span>*/}
                     </div>
                 </div>
                 <div className="cd-timeline-block">
@@ -192,7 +192,7 @@ class Tasks extends Component {
 
                         </p>
 
-                        <span className="cd-date">Oct 13</span>
+                        {/*<span className="cd-date">Oct 13</span>*/}
                     </div>
                 </div>
             </section>
