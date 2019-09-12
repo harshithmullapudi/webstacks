@@ -1,103 +1,106 @@
-.img-fluid.toppers
-{
+.img-fluid.toppers {
     max-width: 50% !important;
     margin-top: 30px;
 }
-.img-fluid.others
-{
+
+.img-fluid.others {
     max-width: 20% !important;
 }
-.img-fluid.view
-{
+
+.img-fluid.view {
     max-width: 150px;
     margin-bottom: 20px;
 }
-.cardTitle
-{
+
+.cardTitle {
     text-align: center;
     text-transform: uppercase;
 }
-.hr
-{
+
+.hr {
     width: 40%;
     border-width: 8px;
     border-color: #4297d0;
 }
-.hr.view
-{
+
+.hr.view {
     width: 20%;
     border-width: 8px;
     border-color: #4297d0;
 }
-.cardPoint
-{
+
+.cardPoint {
     font-weight: bold;
     font-size: 140%;
 }
-.buttonView
-{
-    color: #4297d0!important;
-    text-decoration: none!important;
+
+.buttonView {
+    color: #4297d0 !important;
+    text-decoration: none !important;
 }
-.otherRow
-{
+
+.otherRow {
     margin-top: 30px;
 
 }
+
 .th {
-vertical-align: middle!important;
+    vertical-align: middle !important;
 }
-.td, .th {
-border: none!important;
+
+.td,
+.th {
+    border: none !important;
     text-align: left;
-    vertical-align: middle!important;
+    vertical-align: middle !important;
 }
-tr
-{
-    background-color: white!important;
-    border-bottom: 1px solid #f3f3f3!important;
+
+tr {
+    background-color: white !important;
+    border-bottom: 1px solid #f3f3f3 !important;
 }
-.row
-{
+
+.row {
     background-color: #f3f3f3;
 
 }
-.cardNumber
-{
+
+.cardNumber {
     text-align: center;
 }
-.sizeClass
-{
-    background-color: white!important;
+
+.sizeClass {
+    background-color: white !important;
     padding: 30px;
     box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
-.buttonTags
-{
-    background-color: #f3f3f3!important;
+
+.buttonTags {
+    background-color: #f3f3f3 !important;
     margin: 10px;
-    color: #4297d0!important;
+    color: #4297d0 !important;
 }
-.Social
-{
-    background-color: transparent!important;
+
+.Social {
+    background-color: transparent !important;
     margin-top: 30px;
     margin-bottom: 20px;
 }
-#custom-search-input{
+
+#custom-search-input {
     padding: 3px;
     border: solid 1px #E4E4E4;
     border-radius: 6px;
     background-color: #fff;
 }
 
-#custom-search-input input{
+#custom-search-input input {
     border: 0;
     box-shadow: none;
 }
 
-#custom-search-input button{
+#custom-search-input button {
     margin: 2px 0 0 0;
     background: none;
     box-shadow: none;
@@ -107,75 +110,88 @@ tr
     border-left: solid 1px #ccc;
 }
 
-#custom-search-input button:hover{
+#custom-search-input button:hover {
     border: 0;
     box-shadow: none;
     border-left: solid 1px #ccc;
 }
 
-#custom-search-input .glyphicon-search{
+#custom-search-input .glyphicon-search {
     font-size: 23px;
 }
-.search
-{
+
+.search {
     margin-top: 30px;
     margin-bottom: 30px;
 }
-h5
-{
+
+h5 {
     margin-top: 10px;
     text-align: left;
 }
-.teamId
-{
+
+.teamId {
     font-size: 70%;
 }
 
-.row
-{
+.row {
     font-family: 'Karla', sans-serif;
 }
 
 #\30 {
-  /*background: linear-gradient(to right, #F7971E,#ffec99,#FFD200);*/
+    /*background: linear-gradient(to right, #F7971E,#ffec99,#FFD200);*/
 }
+
 #\31 {
-  /*background: linear-gradient(to right, #ADA996,#F2F2F2,#DBDBDB,#EAEAEA);*/
+    /*background: linear-gradient(to right, #ADA996,#F2F2F2,#DBDBDB,#EAEAEA);*/
 }
+
 #\32 {
-  /*background: linear-gradient(to right, #b33c00,#ffbb99,#ff661a);*/
+    /*background: linear-gradient(to right, #b33c00,#ffbb99,#ff661a);*/
 }
+
 .list {
-  margin: 15px auto;
-  min-height: 100px;
-  /*border-radius: 60px;*/
-    background-color: #fff  ;
-  padding: 10px 10px;
+    margin: 15px auto;
+    min-height: 100px;
+    /*border-radius: 60px;*/
+    background-color: #fff;
+    padding: 10px 10px;
 }
+
 .list-text {
-  margin: auto;
-  /*text-align: center;*/
+    margin: auto;
+    /*text-align: center;*/
 }
 
 .list:nth-child(4n+2) {
-  /*background: linear-gradient(to left,#CC95C0,#DBD4B4,#7AA1D2)*/
+    /*background: linear-gradient(to left,#CC95C0,#DBD4B4,#7AA1D2)*/
 }
+
 .list:nth-child(4n+1) {
-  /*background: linear-gradient(to right,#b20a2c,#fffbd5)*/
+    /*background: linear-gradient(to right,#b20a2c,#fffbd5)*/
 }
+
 .list:nth-child(4n+3) {
-  /*background: linear-gradient(to right,#799F0C,#FFE000)*/
+    /*background: linear-gradient(to right,#799F0C,#FFE000)*/
 }
+
 .list:nth-child(4n+0) {
-  /*background: linear-gradient(to right,#005AA7,#FFFDE4)*/
+    /*background: linear-gradient(to right,#005AA7,#FFFDE4)*/
 }
+
+.hover {
+    border: 0 !important;
+    border-radius: 10px !important;
+}
+
 .hover:hover {
-  transition: all .1s ease-in-out;
-  cursor: pointer;
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: all .1s ease-in-out;
+    cursor: pointer;
+    transform: scale(1.01);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .progressBar {
-  margin: auto;
-  width: 75%;
+    margin: auto;
+    width: 75%;
 }

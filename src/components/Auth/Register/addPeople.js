@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import store from '../../../redux/store';
-import actionCreators from '../../../redux/Actions';
 import {signup} from '../../../redux/store';
 import FormElement from '../FormElement';
 import './addPeople.css'
-import { push } from 'react-router-redux'
 import Select from 'react-select';
 import * as firebase from "../../../firebase";
 import {connect} from 'react-redux';
@@ -44,8 +41,6 @@ class AddView extends Component {
                 photo["type"] = "girls"
             }
             photo["number"] = Math.floor((Math.random() * 7) + 1);
-            // store.dispatch(actionCreators.addUser());
-            // 
             let data = {
                 name: {
                     first : this.state.fields.firstName,

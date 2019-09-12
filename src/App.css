@@ -1,3 +1,16 @@
+@font-face {
+    font-family: 'gotham_mediumregular';
+    src: url('./assets/gotham_medium_regular-webfont.woff2') format('woff2'),
+        url('./assets/gotham_medium_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.body {
+    font-family: 'gotham_mediumregular', sans-serif !important;
+}
+
 .nav-link {
     color: black;
 }
@@ -5,7 +18,7 @@
 a {
     text-decoration: none !important;
     color: #000 !important;
-    font-family: 'Karla', sans-serif !important;
+    font-family: 'gotham_mediumregular', sans-serif !important;
 }
 
 .nav-link {
