@@ -4,7 +4,7 @@ import RichTextEditor from 'react-rte';
 import  {notify} from 'react-notify-toast'
 import {Form,FormGroup, Button, ListGroup, ListGroupItem, ListGroupItemHeading} from "reactstrap";
 import {Link} from "react-router-dom";
-import {addComentDB} from '../../store'
+import {addComentDB} from '../../redux/store'
 import connect from "react-redux/es/connect/connect";
 class QuestionView extends Component {
     constructor(props){
@@ -34,36 +34,36 @@ class QuestionView extends Component {
         }
     }
     render() {
-        let comments = [];
-        if(this.props.state.Reducer.question.comments) {
-            let arrayComments = Object.keys(this.props.state.Reducer.question.comments).map(k => this.props.state.Reducer.question.comments[k]);
-            arrayComments.forEach(comment => {
-                comments.push(
-                    <ListGroupItem  key={comment.id}>
-                        <div dangerouslySetInnerHTML={{ __html: comment.comment }} >
-                        </div>
-                        <p className='pName'>
-                        <small >by <b>{comment.name}</b></small>
-                        </p>
-                    </ListGroupItem>
+        // let comments = [];
+        // if(this.props.state.Reducer.question.comments) {
+        //     let arrayComments = Object.keys(this.props.state.Reducer.question.comments).map(k => this.props.state.Reducer.question.comments[k]);
+        //     arrayComments.forEach(comment => {
+        //         comments.push(
+        //             <ListGroupItem  key={comment.id}>
+        //                 <div dangerouslySetInnerHTML={{ __html: comment.comment }} >
+        //                 </div>
+        //                 <p className='pName'>
+        //                 <small >by <b>{comment.name}</b></small>
+        //                 </p>
+        //             </ListGroupItem>
 
-                )
-            })
+        //         )
+        //     })
 
-        }
-        else
-        {
+        // }
+        // else
+        // {
 
-                comments.push(
-                    <h5 className='noComments'> No comments </h5>
-                )
+        //         comments.push(
+        //             <h5 className='noComments'> No comments </h5>
+        //         )
 
-        }
+        // }
         return (
             <div className='container Question'>
-                <h3> {this.props.state.Reducer.question.title }</h3>
+                {/* <h3> {this.props.state.Reducer.question.title }</h3>
                 <div dangerouslySetInnerHTML={{ __html: this.props.state.Reducer.question.description }} >
-            </div>
+                </div>
                 <br />
                 <br />
                 <br />
@@ -89,8 +89,8 @@ class QuestionView extends Component {
                             {comments}
                         </ListGroup>
                     </ListGroupItem>
-                </ListGroup>
-
+                </ListGroup> */}
+                QuestionView
             </div>
         )
     }

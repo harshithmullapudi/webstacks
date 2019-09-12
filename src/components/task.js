@@ -5,7 +5,7 @@ import {Button, Form, Alert} from 'reactstrap'
 import FormElement from "./FormElement";
 import connect from "react-redux/es/connect/connect";
 import  {notify} from 'react-notify-toast'
-import store,{submitTestUrl} from "../store";
+import store,{submitTestUrl} from "../redux/store";
 var isGithubUrl = require('is-github-url');
 class Tasks extends Component {
     constructor(props){
@@ -38,10 +38,10 @@ class Tasks extends Component {
     }
 
     render() {
-        if(this.props.user.Reducer.user && this.props.user.Reducer.user.answer)
+        if(this.props.user && this.props.user.answer)
         {
             console.log("entered");
-            this.state.task.push(this.props.user.Reducer.user.answer.length);
+            this.state.task.push(this.props.user.answer.length);
             console.log(this.state.task.indexOf(1));
         }
         else
@@ -119,10 +119,10 @@ class Tasks extends Component {
                             {/*{this.state.task.indexOf(2) > -1 ?   <Alert color="success">*/}
                             {/*Submitted !! :) will get back soon*/}
                             {/*</Alert> : ''}*/}
-                            {/*{this.props.user.Reducer.user === null || this.state.task.indexOf(2) > -1 || this.state.btnState ? '' : <Button color="success" className='float-right' size='sm' onClick={this.changeStateTrue}> Submit </Button>}*/}
-                            {/*{this.props.user.Reducer.user !== null && this.state.task.indexOf(2) < 0 && this.state.btnState ? <Form> <FormElement name="github" inputType="text"  fullName="Give the github url" action={this.onChange} /> </Form> : ''}*/}
-                            {/*{this.props.user.Reducer.user !== null && this.state.task.indexOf(2) < 0 && this.state.btnState ? <Button color="success" className='float-right' onClick={this.submitTask}> Submit </Button>: ''}*/}
-                            {/*{this.props.user.Reducer.user !== null && this.state.task.indexOf(2) < 0 && this.state.btnState ? <Button color="error" className='float-right margin' onClick={this.changeStateFalse}> Cancel </Button>: ''}*/}
+                            {/*{this.props.user === null || this.state.task.indexOf(2) > -1 || this.state.btnState ? '' : <Button color="success" className='float-right' size='sm' onClick={this.changeStateTrue}> Submit </Button>}*/}
+                            {/*{this.props.user !== null && this.state.task.indexOf(2) < 0 && this.state.btnState ? <Form> <FormElement name="github" inputType="text"  fullName="Give the github url" action={this.onChange} /> </Form> : ''}*/}
+                            {/*{this.props.user !== null && this.state.task.indexOf(2) < 0 && this.state.btnState ? <Button color="success" className='float-right' onClick={this.submitTask}> Submit </Button>: ''}*/}
+                            {/*{this.props.user !== null && this.state.task.indexOf(2) < 0 && this.state.btnState ? <Button color="error" className='float-right margin' onClick={this.changeStateFalse}> Cancel </Button>: ''}*/}
 
                         </p>
                         <span className="cd-date">Sep 20</span>
@@ -159,10 +159,10 @@ class Tasks extends Component {
                         {this.state.task.indexOf(3) > -1 ?   <Alert color="success">
                         Submitted !! :) will get back soon
                         </Alert> : ''}
-                        {this.props.user.Reducer.user === null || this.state.task.indexOf(3) > -1 || this.state.btnState ? '' : <Button color="success" className='float-right' size='sm' onClick={this.changeStateTrue}> Submit </Button>}
-                        {this.props.user.Reducer.user !== null && this.state.task.indexOf(3) < 0 && this.state.btnState ? <Form> <FormElement name="github" inputType="text"  fullName="Give the github url" action={this.onChange} /> </Form> : ''}
-                        {this.props.user.Reducer.user !== null && this.state.task.indexOf(3) < 0 && this.state.btnState ? <Button color="success" className='float-right' onClick={this.submitTask}> Submit </Button>: ''}
-                        {this.props.user.Reducer.user !== null && this.state.task.indexOf(3) < 0 && this.state.btnState ? <Button color="error" className='float-right margin' onClick={this.changeStateFalse}> Cancel </Button>: ''}
+                        {this.props.user === null || this.state.task.indexOf(3) > -1 || this.state.btnState ? '' : <Button color="success" className='float-right' size='sm' onClick={this.changeStateTrue}> Submit </Button>}
+                        {this.props.user !== null && this.state.task.indexOf(3) < 0 && this.state.btnState ? <Form> <FormElement name="github" inputType="text"  fullName="Give the github url" action={this.onChange} /> </Form> : ''}
+                        {this.props.user !== null && this.state.task.indexOf(3) < 0 && this.state.btnState ? <Button color="success" className='float-right' onClick={this.submitTask}> Submit </Button>: ''}
+                        {this.props.user !== null && this.state.task.indexOf(3) < 0 && this.state.btnState ? <Button color="error" className='float-right margin' onClick={this.changeStateFalse}> Cancel </Button>: ''}
 
 
                         <span className="cd-date">Oct 5</span>

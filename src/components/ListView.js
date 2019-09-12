@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './listView.css'
-import RecordItems from './RecordItems'
+import RecordItems from './Leaderboard/RecordItems';
 class ListView extends Component {
     constructor(props){
         super();

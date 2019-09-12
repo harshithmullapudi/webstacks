@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import store, {addQuestionDB, getQuestion, getQuestions} from "../../store";
+import store, {addQuestionDB, getQuestion, getQuestions} from "../../redux/store";
 import './questionsPage.css'
 import RichTextEditor from 'react-rte';
 import {Button, Input, Form, FormGroup, Card, CardHeader, CardFooter, CardTitle, CardText, CardBody, CardLink} from 'reactstrap';

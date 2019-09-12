@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import store, { addUser } from '../store';
-import FormElement from './FormElement';
+import store from '../../../redux/store';
+import actionCreators from '../../../redux/Actions';
+import FormElement from '../../FormElement';
 import './addPeople.css'
 import { push } from 'react-router-redux'
 import Select from 'react-select';
-import * as firebase from "../firebase";
+import * as firebase from "../../../firebase";
 
 const options = [
     { value: 'male', label: 'male' },
@@ -40,7 +41,7 @@ class AddView extends Component {
                 photo["type"] = "girls"
             }
             photo["number"] = Math.floor((Math.random() * 7) + 1);
-            store.dispatch(addUser({first : this.state.fields.firstName, last : this.state.fields.lastName}, this.state.fields.about, this.state.fields.email, this.state.fields.phone, {github  : this.state.fields.socialGithub, linkedin : this.state.fields.socialLinkedin}, photo));
+            store.dispatch(actionCreators.addUser({first : this.state.fields.firstName, last : this.state.fields.lastName}, this.state.fields.about, this.state.fields.email, this.state.fields.phone, {github  : this.state.fields.socialGithub, linkedin : this.state.fields.socialLinkedin}, photo));
             store.dispatch(push('/'))
         }
         this.onChange = (id, field, val) => {

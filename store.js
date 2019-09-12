@@ -1,36 +1,16 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
-import {database, auth} from './firebase'
+import {database, auth} from './src/firebase'
 import thunkMiddleware from 'redux-thunk'
 import  {notify} from 'react-notify-toast'
-import * as firebase from "./firebase";
+import * as firebase from "./src/firebase";
 
 /**
  * ACTION TYPES
  */
-const ADD_TASK = 'add task'
-const REMOVE_TASK = 'remove task'
-const GET_RECORDS = 'get records'
-const GET_QUESTIONS = 'get questions'
-const GET_USER  = 'get user'
-const UPDATE_USER  = 'update user'
-const UPDATE_USERDATA  = 'update user data'
-const NULL_USERDATA  = 'null user data'
-const SUBMIT_TEST  = 'update git'
-const SET_QUESTON  = 'set question'
-const GET_CHAT = 'get chat'
 
 
-/**
- * ACTION CREATORS
- */
-export const addTask = (task) => ({type: ADD_TASK, task})
-export const removeTask = (task) => ({type: REMOVE_TASK, task})
-export const getTasks = (records) => ({type: GET_RECORDS, records})
-export const getQuestionsDispatch = (questions) => ({type: GET_QUESTIONS, questions})
-export const setQuestion = (question) => ({type:SET_QUESTON, question})
-export const getChatsDispatch = (chats) => ({type:GET_CHAT, chats})
 /**
  * THUNKS
  */

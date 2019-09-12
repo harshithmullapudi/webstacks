@@ -1,5 +1,6 @@
-import firebase from 'firebase'
-
+import firebase from 'firebase/app'
+import 'firebase/auth';
+import 'firebase/database';
 
 const config = {
     apiKey: "AIzaSyDRnNEaccmuZz_9qtRWfAREag4XlyPZ3Ck",
@@ -9,11 +10,11 @@ const config = {
     storageBucket: "task4-7d512.appspot.com",
     messagingSenderId: "365303459495"
 };
+
 firebase.initializeApp(config);
 
 export const database = firebase.database()
 export const auth = firebase.auth()
-export const storage = firebase.storage()
 
 
 
