@@ -3,11 +3,11 @@ import createHistory from 'history/createBrowserHistory'
 import {database, auth} from '../firebase'
 import thunkMiddleware from 'redux-thunk'
 import  {notify} from 'react-notify-toast'
-import * as firebase from "../firebase";
 import actionCreators ,{actions} from './Actions';
 
 const { addTask,
         removeTask,
+        updateUserData,
         getTasks,
         getQuestionsDispatch,
         setQuestion,
@@ -27,23 +27,18 @@ const {
     GET_CHAT
 } = actions;
 
-export function getRecordsThunk() {
 
-  return dispatch => {
-    database.ref(`data`).orderByChild('points').on('value', snap => {
-        let values = Object.keys(snap.val()).map(k => {
-          if(snap.val()[k]) {
-              let temp = snap.val()[k];
-              temp["key"] = k;
-             return  temp;
-          }
-        return null
-        });
-        values = values.filter(k => k);
-        setTimeout(() => { dispatch(getTasks(values.sort((a, b) => b.points - a.points)))}, 1);
-
-      })
-  }
+export const getRecordsThunk = () => async (dispatch) => {
+    let snapshot = await database.ref('data').orderByChild('points').once('value');
+    let values = Object.keys(snapshot.val()).map(key => {
+        if(snapshot.val()[key]) {
+            let temp = snapshot.val()[key];
+            temp["key"] = key;
+            return temp;
+        }
+        return null;
+    });
+    dispatch(getTasks(values.sort((a,b) => b.points - a.points)));
 }
 
 export function getQuestion(id , dispatch) {
@@ -53,25 +48,7 @@ export function getQuestion(id , dispatch) {
     })
 }
 
-export function watchTaskChangedEvent(dispatch) {
-    database.ref(`data`).on('child_changed', (snap) => {
-        let user = store.getState().Reducer.user;
-        if(user && (user.email === snap.val().email))
-        {
-           let details = snap.val();
-           details['key'] = snap.key;
-            setTimeout(() => {  dispatch(updateUserData(details)); }, 1);
 
-        }
-        else
-        {
-            setTimeout(() => {  dispatch(updateUserData(user)); }, 1);
-
-        }
-    });
-
-
-}
 
 export function addComentDB(question, comment) {
     let id = Math.floor(Math.random()*90000) + 10000;
@@ -98,35 +75,11 @@ export function getQuestions() {
         })
     }
 }
-//A function to get the data from the DB
-export function getChats() {
-
-  return dispatch => {
-    database.ref('/chat').limitToLast(12).on('value',snap => {
-
-        if(snap.val()) {
-          let values = Object.keys(snap.val()).map(k => {
-
-              return snap.val()[k];
-          });
-          setTimeout(() => {
-            dispatch(getChatsDispatch(values.sort((a,b) => a.added - b.added)))
-          }, 1);
-        }
-    })
-  }
-}
 
 
 
-function updateUserData(user)
-{
-    return{
-        type : UPDATE_USERDATA,
-        user
 
-    }
-}
+
 
 export function addQuestionDB(title, description)
 {
@@ -141,21 +94,7 @@ export function addQuestionDB(title, description)
         added : (new Date()).getTime()
     })
 }
-// Added a function to add the chat in db
-export function addChatDB(content,imgUrl)
-{
-    let id = Math.floor(Math.random()*90000) + 10000;
-   return database.ref("chat/"+ id ).set({
-       id : id,
-        description : content,
-        by : store.getState().Reducer.user.email,
-        imgUrl: imgUrl,
-        name : store.getState().Reducer.user.name.first +" "+ store.getState().Reducer.user.name.last ,
-       added : (new Date()).getTime(),
-       pic : store.getState().Reducer.user.photo.type,
-       picid : store.getState().Reducer.user.photo.number
-    })
-}
+
 
 export function login(email, password) {
     auth.signInWithEmailAndPassword(email, password).then(result => {
@@ -163,22 +102,30 @@ export function login(email, password) {
     }).catch(function(error) {
      notify.show(error.message, "error")
     })
+}
+
+export const signup = (data) => async (dispatch) => {
+    try {
+        console.log(data)
+        await auth.createUserWithEmailAndPassword(data.email, data.password);
+        await database.ref("data").push(data);
+        notify.show("Account created successfully!", "success");
+    } catch(err) {
+        console.log(err);
+    }
+    dispatch({
+        type: 'TEST'
+    });
 
 }
 
 
 export function signOut() {
-
     auth.signOut().then(function() {
         notify.show("Successfully Logged Out", "success");
-
-
-
     }).catch(function(error) {
         notify.show(error.message, "error")
     });
-
-
 }
 
 export function submitTestUrl(link) {
@@ -201,54 +148,6 @@ function upUser(obj, key) {
  database.ref('data/' + key).update(obj).then(result => {
      notify.show("Successfully updated your profile", "success");
  })
-
-}
-
-
-export function updateUser(details, photo) {
-    let name = details.name;
-    let phone = details.phone;
-    let social = details.social;
-    let about = details.about;
-    let email = details.email;
-    let key = details.key;
-    return{
-        type : UPDATE_USER,
-        name,
-        phone,
-        social,
-        about,
-        photo,
-        email,
-        key
-    }
-}
-
-export function checkUser()
-{
-    return dispatch => {
-            firebase.auth.onAuthStateChanged(authUser => {
-                if (authUser) {
-                    database.ref('data').orderByChild('email').equalTo(authUser.email).once('value', users => {
-                        let user = Object.keys(users.val()).map(k => {
-                            let temp = users.val()[k];
-                            temp['key'] = k;
-                            return temp;
-                        })[0]
-                        dispatch({
-                            type: GET_USER,
-                            user
-                        })
-                    })
-                }
-                else {
-                    dispatch({
-                        type : NULL_USERDATA
-                    })
-                }
-
-            });
-        }
 
 }
 

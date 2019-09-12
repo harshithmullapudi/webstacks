@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import store from '../../../redux/store';
 import actionCreators from '../../../redux/Actions';
-import FormElement from '../../FormElement';
+import {signup} from '../../../redux/store';
+import FormElement from '../FormElement';
 import './addPeople.css'
 import { push } from 'react-router-redux'
 import Select from 'react-select';
 import * as firebase from "../../../firebase";
+import {connect} from 'react-redux';
 
 const options = [
     { value: 'male', label: 'male' },
@@ -25,6 +27,7 @@ class AddView extends Component {
                 tags : [],
                 socialGithub: '',
                 socialLinkedin : '',
+                password: '',
                 gender :   { value: 'male', label: 'male' }
             },
             btnState: false
@@ -41,8 +44,24 @@ class AddView extends Component {
                 photo["type"] = "girls"
             }
             photo["number"] = Math.floor((Math.random() * 7) + 1);
-            store.dispatch(actionCreators.addUser({first : this.state.fields.firstName, last : this.state.fields.lastName}, this.state.fields.about, this.state.fields.email, this.state.fields.phone, {github  : this.state.fields.socialGithub, linkedin : this.state.fields.socialLinkedin}, photo));
-            store.dispatch(push('/'))
+            // store.dispatch(actionCreators.addUser());
+            // 
+            let data = {
+                name: {
+                    first : this.state.fields.firstName,
+                    last : this.state.fields.lastName,
+                },
+                social: {
+                    github: this.state.fields.socialGithub,
+                    linkedin: this.state.fields.socialLinkedin
+                },
+                about: this.state.fields.about,
+                email: this.state.fields.email,
+                phone: this.state.fields.phone,
+                password: this.state.fields.password,
+                photo
+            }
+            this.props.signup(data);
         }
         this.onChange = (id, field, val) => {
             this.state.fields[field] = val;
@@ -80,10 +99,11 @@ class AddView extends Component {
                     onChange={this.handleChange}
                     options={options}
                 />
+                <FormElement name="password" inputType="password" fullName="Password" action={this.onChange} />
                 {this.state.btnState ? <button className="btn btn-outline-success" onClick={this.onSubmit}>Add Record</button> : ''}
             </div>
             </div>
         )
     }
 }
-export default AddView;
+export default connect(null, {signup})(AddView);

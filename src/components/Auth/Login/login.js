@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FormElement from '../../FormElement';
+import FormElement from '../FormElement';
 import {login} from '../../../redux/store'
 import * as firebase from "../../../firebase";
 import './login.css'

@@ -3,8 +3,9 @@ import {Card, CardBody, CardText, CardTitle, Col, Row, Form} from "reactstrap";
 import connect from "react-redux/es/connect/connect";
 import './profile.css'
 import Select from 'react-select';
-import FormElement from '../FormElement';
-import store, {checkUser, updateUser} from "../../redux/store";
+import FormElement from '../Auth/FormElement';
+import store, {checkUser} from "../../redux/store";
+import actionCreators from '../../redux/Actions';
 var QRCode = require('qrcode.react'); //For QR Code component taken from https://github.com/zpao/qrcode.react
 function importAll(r) {
     let images = {};
@@ -41,7 +42,7 @@ class Profile extends Component {
                 photo["type"] = "girls"
             }
             photo["number"] = Math.floor((Math.random() * 7) + 1);
-            store.dispatch(updateUser(this.props.user, photo));
+            store.dispatch(actionCreators.updateUser(this.props.user, photo));
         }
         this.onChange = (id, field, val) => {
             if(field === 'github' || field === 'linkedin')

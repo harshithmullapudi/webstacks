@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './tasks.css'
 import task from '../assets/menu.svg'
 import {Button, Form, Alert} from 'reactstrap'
-import FormElement from "./FormElement";
+import FormElement from "./Auth/FormElement";
 import connect from "react-redux/es/connect/connect";
 import  {notify} from 'react-notify-toast'
 import store,{submitTestUrl} from "../redux/store";

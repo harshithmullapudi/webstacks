@@ -35,8 +35,8 @@ class App extends Component {
                 ? this.setState({ authUser })
                 : this.setState({ authUser: null });
         });
-        store.dispatch(checkUser())
-        watchTaskChangedEvent(store.dispatch);
+        // store.dispatch(checkUser())
+        // watchTaskChangedEvent(store.dispatch);
 
     }
   render() {

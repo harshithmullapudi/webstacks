@@ -28,7 +28,29 @@ const actionCreators = {
             phone,
             social,
             photo
-        })
+        }),
+    updateUserData: (user) => ({
+        type : actions.UPDATE_USERDATA,
+        user
+    }),
+    updateUser: (details, photo) => {
+        let name = details.name;
+        let phone = details.phone;
+        let social = details.social;
+        let about = details.about;
+        let email = details.email;
+        let key = details.key;
+        return{
+            type : actions.UPDATE_USER,
+            name,
+            phone,
+            social,
+            about,
+            photo,
+            email,
+            key
+        }
+    }
 }
 
 export default actionCreators;
