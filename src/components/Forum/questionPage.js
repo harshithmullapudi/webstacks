@@ -1,192 +1,114 @@
-import React, { Component } from 'react';
-import store, {addQuestionDB, getQuestion, getQuestions} from "../../redux/store";
-import './questionsPage.css'
-import RichTextEditor from 'react-rte';
-import {Button, Input, Form, FormGroup, Card, CardHeader, CardFooter, CardTitle, CardText, CardBody, CardLink} from 'reactstrap';
-import {notify} from "react-notify-toast";
-import connect from "react-redux/es/connect/connect";
-import {Link} from "react-router-dom";
-import Questionview from './questionView'
-class QuestionsView extends Component {
+import React, { Component, Fragment } from 'react'
+import {Row, Col, ListGroup, ListGroupItem, Button} from 'reactstrap';
+import './questionsPage.css';
+import AddQuestion from './addQuestion';
+import {connect} from 'react-redux';
+import {getQuestions} from '../../redux/store';
+import Details from './details';
 
-    constructor(props){
-        super()
+const cluster =  ["Machine Learning", "Web Development","App Development" ];
+
+class QuestionPage extends Component {
+    constructor(props) {
+        super(props);
         this.state = {
-            value: RichTextEditor.createEmptyValue(),
-            addQuestion : false,
-            title : '',
-            selectedQuestion : null,
-            search : '',
+            channel: 0,
+            viewMode: 0,
+            questions: null,
+            selectedQuestion: null
         }
 
-        this.onChange = (value) => {
-            this.setState({value : value});
-            if (this.props.onChange) {
-                this.props.onChange(
-                    value.toString('html')
-                );
-            }
-        };
-        this.onChangeTitle = (value) => {
-            this.setState({ title : value.target.value})
-        }
-        this.onChangeSearch = (value) => {
-            this.setState({search: value.target.value})
-        }
-        this.addQuestion = (e) => {
-            e.preventDefault();
-            this.setState({ addQuestion : true});
-
-        }
-        this.deleteQuestion = (e) => {
-            e.preventDefault();
-            this.setState({ addQuestion : false});
-        }
-        this.addQuestionStart = (e) => {
-            e.preventDefault();
-            if(this.state.title && this.state.value.toString('html')) {
-                addQuestionDB(this.state.title, this.state.value.toString('html')).then(response => {
-                    notify.show("Successfully added question", "success")
-                    this.setState({
-                        value: RichTextEditor.createEmptyValue(),
-                        title: '',
-                        addQuestion: false
-                    })
-                })
-            }
-            else {
-                notify.show("Fill the details correctly", "error");
-            }
-        }
-        this.cancelSelectionQuestion = () => {
+        this.handleChannel = (e) => {
             this.setState({
-                selectedQuestion : null
+                channel: e.target.value,
+                viewMode: 0
+            });
+        }
+        this.setViewMode = (data) => {
+            this.setState({
+                viewMode: 1,
+                selectedQuestion: data
+            });
+        }
+        this.backButton = () => {
+            this.setState({
+                viewMode: 0,
+                selectedQuestion: null
             })
         }
-
-
     }
-    selectQuestion = (question) => {
-        this.setState({
-            selectedQuestion : question
-        })
-        getQuestion(question.id, store.dispatch)
-    }
+    componentDidMount() {
+        this.props.getQuestions();
+    }    
+
     render() {
-        let questions = [];
-        if(this.state.search !== '') {
-            this.props.questions.Reducer.questions.forEach(question => {
-
-                if ((question.title.includes(this.state.search)) || (question.description.includes(this.state.search))) {
-                    let description = [];
-                    description.push(question.description)
-                    questions.push(  <Card className='cardCss' key={question.id}>
-                        <CardBody>
-                            <CardTitle><b>{question.title}</b>
-                                <span className='date float-right'>{(new Date(question.added)).toDateString()}</span>
-                            </CardTitle>
-                            <CardText>  <div dangerouslySetInnerHTML={{__html: description}}/></CardText>
-                            <Button color="info" className='float-right' onClick={() => {
-                                this.selectQuestion(question)
-                            }
-                            }>View</Button>
-                        </CardBody>
-                        <CardFooter>
-                            <small>by <b>{question.name}</b></small>
-                            { Object.keys(question.comments).map(k => question.comments[k]).length ?  <p className='float-right'><b> {Object.keys(question.comments).map(k => question.comments[k]).length} Comments </b></p> : '' }
-                        </CardFooter>
-                    </Card>)
-                }
-            })
-        }
-        else
-        {
-            this.props.questions.Reducer.questions.forEach(question => {
-                let description = [];
-                description.push(question.description)
-                questions.push(
-                    <Card className='cardCss' key={question.id}>
-                        <CardBody>
-                            <CardTitle><b>{question.title}</b>
-                            <span className='date float-right'>{(new Date(question.added)).toDateString()}</span>
-                            </CardTitle>
-                            <CardText>  <div dangerouslySetInnerHTML={{__html: description}}/></CardText>
-                            <Button color="info" className='float-right' onClick={() => {
-                                this.selectQuestion(question)
-                            }
-                            }>View</Button>
-                        </CardBody>
-                        <CardFooter>
-                            <small>by <b>{question.name}</b></small>
-                            { question.comments && Object.keys(question.comments).map(k => question.comments[k]).length ?  <p className='float-right'><b> {Object.keys(question.comments).map(k => question.comments[k]).length} Comments </b></p> : '' }
-                        </CardFooter>
-                    </Card>
-                )
-            })
-        }
-        if(questions.length === 0)
-        {
-            questions.push(
-                <h5 className='noComments'> No questions posted </h5>
-            )
-        }
+        const {questions} = this.props;
+        let jsx = "No questions posted.."
+        if(questions.length === 0) {
+            console.log("Wait for data....");
+        } else {
+            console.log("Recieved data", questions);
+            let data = questions[this.state.channel];
+            if(questions[this.state.channel]) {
+                jsx = Object.keys(data).map(key => {
+                    let date = new Date(data[key].timestamp);
+                    let name = data[key].userName
+                    return (
+                    <div className="card container question-card">
+                     <h5 className="mt-2">{data[key].title}</h5>        
+                     <p>{data[key].description}</p>
+                     <div className="mb-2 question-footer">
+                         <small className="text-muted">{`Asked by ${name} at ${date}`}</small>
+                         <Button className="btn btn-danger" onClick = {() => (
+                             this.setViewMode(data[key])
+                            )}>View</Button>
+                     </div>
+                 </div>
+                )});
+            } 
+        }   
         return (
-            <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                 <a className="navbar-brand" onClick={this.cancelSelectionQuestion}>Forum</a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon" />
-                </button>
-
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav mr-auto">
-                    </ul>
-                    <form className="form-inline my-2 my-lg-0">
-                        {this.props.questions.Reducer.user ? <button className="btn btn-success my-2 my-sm-0" onClick={this.addQuestion}>Add question</button> : <Link class="nav-link" to='/login'>  <Button className="btn btn-success my-2 my-sm-0">Login / Add question</Button></Link> }
-                    </form>
-                    <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value={this.state.search} onChange={this.onChangeSearch} />
-                    </form>
-                </div>
-            </nav>
-                {this.state.addQuestion ? <div className='containerType'>
-                        <Form>
-                            <FormGroup>
-                            <label htmlFor="exampleInputEmail1">Title</label>
-                            <Input type='text' id="exampleInputEmail1"
-                                   aria-describedby="emailHelp" placeholder="Enter Title of your question" value={this.state.title} onChange={this.onChangeTitle}/>
-                                <small id="emailHelp" className="form-text text-muted">Please keep it very short
-                                </small>
-                            </FormGroup>
-
-                    <RichTextEditor
-                        value={this.state.value}
-                        onChange={this.onChange}
-                    />
-                        <Button className='bitBottom' color="success" onClick={this.addQuestionStart}>Add question</Button>
-                        <Button className='bitBottom' color="danger" onClick={this.deleteQuestion}>Cancel</Button>
-                        </Form>
-                </div> :''}
-                {this.state.selectedQuestion && this.props.questions.Reducer.question ?  <Questionview user={this.props.questions.Reducer.user}/> : <div className='container'>
-                    <div>
-                        {questions}
-                    </div>
-                    <div className="list-group">
-
-                    </div>
-                </div>}
+            <div className="container">
+                <h3 className="heading">Forum</h3>
+                <Row className="forum">
+                    <Col md={4}>
+                        <h4>Channels</h4>
+                        <ListGroup onClick = {this.handleChannel}>
+                            <ListGroupItem value={0} className="cluster-group">
+                                Machine Learning
+                            </ListGroupItem>
+                            <ListGroupItem value={1} className="cluster-group">
+                                Web Development
+                            </ListGroupItem>
+                            <ListGroupItem value={2} className="cluster-group">
+                                App Development
+                            </ListGroupItem>
+                        </ListGroup>
+                    </Col>
+                    <Col md={8}>
+                        {this.state.viewMode === 0 && <Fragment>
+                        <h4>Questions ({cluster[this.state.channel]})</h4>
+                        {jsx}
+                        <hr />
+                        <AddQuestion onAdd={this.addQuestions} cluster = {this.state.channel}/>
+                        </Fragment>}
+                        {
+                            this.state.viewMode === 1 && 
+                            <Fragment>
+                                <Button onClick = {this.backButton}>Back</Button>
+                                <Details id = {this.state.selectedQuestion.id} channel = {this.state.channel}/>
+                            </Fragment>
+                        }
+                    </Col>
+                </Row>
             </div>
         )
     }
 }
-const mapState = state => ({
-    questions: state
-})
 
-const mapDispatch = dispatch => {
-    dispatch(getQuestions())
-    return {}
-}
-export default connect(mapState, mapDispatch)(QuestionsView);
+const mapStateToProps = (state) => ({
+    questions: state.questions
+});
+
+
+export default connect(mapStateToProps,{getQuestions})(QuestionPage);

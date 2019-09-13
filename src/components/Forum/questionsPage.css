@@ -1,36 +1,21 @@
-h2
-{
-    font-family: 'Karla', sans-serif;
-
-}
-.form-inline
-{
-    margin-right: 10px;
+.forum {
+    background-color: #fff !important;
 }
 
-.containerType
-{
-    padding: 3%;
-    background-color: #f8f9fa;
-}
-.bitBottom
-{
-    margin: 20px;
-}
-
-form{
-    margin-bottom: 20px;
-}
-a{
+.cluster-group {
     cursor: pointer;
 }
-.date
-{
-    text-align: right;
-    font-size: 80%;
-    font-weight: normal;
+
+.cluster-group:hover {
+    background-color: #dadada;
 }
-.cardCss
-{
-    margin-bottom: 30px;
+
+.question-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.question-card {
+    margin-top: 10px !important;
 }

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import logo from './assets/logo.png';
 import './App.css';
-import { Router, Route} from 'react-router-dom';
-import ListView from './components/ListView';
+import { Router } from 'react-router-dom';
 import {
     Navbar,
     Nav,
@@ -10,15 +9,10 @@ import {
 } from 'reactstrap';
 import * as firebase from './firebase';
 import {Link} from 'react-router-dom'
-import Provider from "react-redux/es/components/Provider";
+import  {Provider, connect} from "react-redux";
 import store, {checkUser, history, watchTaskChangedEvent} from "./redux/store";
-import AddView from "./components/Auth/Register/addPeople";
-import Tasks from "./components/task";
-import LoginView from "./components/Auth/Login/login";
 import Notifications from 'react-notify-toast';
 import {signOut} from './redux/store'
-import ProfileView from "./components/Profile/profileView";
-import QuestionsView from "./components/Forum/questionPage";
 import Routes from './components/Router/router';
 class App extends Component {
     constructor(props) {
@@ -35,13 +29,11 @@ class App extends Component {
                 ? this.setState({ authUser })
                 : this.setState({ authUser: null });
         });
-        // store.dispatch(checkUser())
-        // watchTaskChangedEvent(store.dispatch);
-
+        this.props.checkUser();
     }
   render() {
     return (
-        <Provider store={store}>
+        <div>
         <Router history={history}>
             <main>
                 <Notifications/>
@@ -65,9 +57,9 @@ class App extends Component {
                     </div>
             </main>
         </Router>
-        </Provider>
+        </div>
     );
   }
 }
 
-export default App;
+export default connect(null, {checkUser})(App);
