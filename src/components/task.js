@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './tasks.css'
 import menuImg from '../assets/menu.svg'
 import {Button, Input} from 'reactstrap'
-import FormElement from "./Auth/FormElement";
 import  {notify} from 'react-notify-toast'
 import { Nav, NavItem, NavLink } from 'reactstrap';
 import {connect} from 'react-redux';
@@ -10,9 +9,11 @@ import {getTask, submitTask} from '../redux/store';
 import uuid from 'uuid';
 import bg from '../assets/bg15.png';
 var isGithubUrl = require('is-github-url');
+
+
 class Tasks extends Component {
     constructor(props){
-        super();
+        super(props);
         this.state = {
             "github" : '',
             'task' :[],
@@ -38,8 +39,6 @@ class Tasks extends Component {
         this.submitTask = (data) =>{
             if(isGithubUrl(this.state.github))
             {
-                //store.dispatch(submitTestUrl(this.state.github));
-                console.log("URL Submitted successfully...", this.props.user.user.key);
                 this.props.submitTask({
                     taskId: data.id,
                     id: uuid(),
@@ -71,7 +70,6 @@ class Tasks extends Component {
     render() {
         if(this.props.user && this.props.user.answer)
         {
-            console.log("entered");
             this.state.task.push(this.props.user.answer.length);
             console.log(this.state.task.indexOf(1));
         }
@@ -87,14 +85,11 @@ class Tasks extends Component {
                 displayContent = [];
                 displayContent.push();
                 displayContent = Object.keys(data).map((key) => {
-                    console.log(key);
                     let desc = data[key].description.map((d,id) => {
-                        console.log(d)
                         return (<li key={id}>
                             {d}
                         </li>)
                     });
-                    console.log(desc, "This is description");
                     return (
                         <div className="cd-timeline-block" key = {key}>
                             <div className="cd-timeline-img cd-picture">
@@ -121,7 +116,6 @@ class Tasks extends Component {
 
             }
         }
-        console.log(displayContent);
         let noTask = (
             <div className="no_task_wrapper">
                 <img src={bg} />

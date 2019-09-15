@@ -42,24 +42,24 @@ class App extends Component {
             <main>
                 <Notifications/>
                 <Navbar color="light" light expand="md">
-                <Link class='navbar-brand' href="/" to="/" > <img src={logo}  width="200" height="auto" alt=""/></Link>
+                <Link className='navbar-brand' href="/" to="/" > <img src={logo}  width="200" height="auto" alt=""/></Link>
                     <NavbarToggler onClick={this.toggle} className="toggle-btn"/>
                     <Collapse isOpen={this.state.isOpen} navbar className="text-center">
                         <Nav className="ml-auto" navbar>
                         {this.state.authUser && <Fragment>
                             <NavItem >
-                                <Link class="nav-link" to='/leaderboard'>Leaderboard</Link>
+                                <Link className="nav-link" to='/leaderboard'>Leaderboard</Link>
                             </NavItem>
                             <NavItem >
-                                <Link class="nav-link" to='/tasks'>Tasks</Link>
+                                <Link className="nav-link" to='/tasks'>Tasks</Link>
                             </NavItem>
-                            <NavItem> <Link class="nav-link" to='/profile'>Profile</Link></NavItem> 
-                            <NavItem> <Link to='/forum' class="nav-link">Forum</Link></NavItem>
-                            <NavItem> <Link to='/' class="nav-link" onClick={signOut}> Log out</Link></NavItem>
+                            <NavItem> <Link className="nav-link" to='/profile'>Profile</Link></NavItem> 
+                            <NavItem> <Link to='/forum' className="nav-link">Forum</Link></NavItem>
+                            <NavItem> <Link to='/' className="nav-link" onClick={signOut}> Log out</Link></NavItem>
                         </Fragment>
                         }
-                        { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/login'>Login</Link> </NavItem>  : ''}
-                        { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/add'>Register</Link></NavItem> : ''}
+                        { !this.state.authUser ?  <NavItem> <Link className="nav-link" to='/login'>Login</Link> </NavItem>  : ''}
+                        { !this.state.authUser ?  <NavItem> <Link className="nav-link" to='/add'>Register</Link></NavItem> : ''}
                         </Nav>
                     </Collapse>
                 </Navbar>

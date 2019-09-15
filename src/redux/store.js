@@ -1,10 +1,9 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import createHistory from 'history/createBrowserHistory'
 import {database, auth} from '../firebase'
 import thunkMiddleware from 'redux-thunk'
 import  {notify} from 'react-notify-toast'
 import actionCreators ,{actions} from './Actions';
-import { stat } from 'fs'
 
 const { addTask,
         removeTask,
@@ -215,7 +214,6 @@ function submit_response(user){
 function Reducer (state = { records : [], questions : [], user : null, question : null, tasks: [] }, action) {
   switch (action.type) {
     case GET_USER:
-        console.log(action);
           return {...state, user: action.user };
     case GET_RECORDS:
       return { 'records' : action.records, "user" : state.user,  "questions" : state.questions , "question" : state.question};
