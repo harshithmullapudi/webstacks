@@ -35,7 +35,7 @@ class Details extends Component {
             let temp = question.replies;
             replies = Object.keys(question.replies).map((k,id) => {
                 return (
-                    <div className="card container question-card replycard" key = {id}>
+                    <div className="replycard" key = {id}>
                         <p className="text-muted mt-3">{temp[k].reply}</p>
                         <p className="text-muted"><small> - By {`${temp[k].author} at ${new Date(temp[k].timestamp)}`}</small></p>
                     </div>
@@ -44,14 +44,16 @@ class Details extends Component {
         }
         return (
             <Fragment>
-            <div className="card container question-card">
-                <h3 className="mt-2 text-left">{question.title}</h3>
-                <p>{question.description}</p>
-                <div className="mb-3">
-                    <small className="text-muted">{`Posted by ${question.userName} at ${new Date(question.timestamp)}`}</small>
+                <div className="card container question-card ">
+                    <h3 className="mt-2 text-left">{question.title}</h3>
+                    <p>{question.description}</p>
+                    <div className="mb-3">
+                        <small className="text-muted">{`Posted by ${question.userName} at ${new Date(question.timestamp)}`}</small>
+                    </div>
                 </div>
-            </div>
-            {replies}   
+                <div className="reply-container">
+                {replies} 
+                </div>
             <hr/>
             <h4>Your Answer</h4>
             <div className ="container question-card">

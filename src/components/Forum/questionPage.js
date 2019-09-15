@@ -5,6 +5,7 @@ import AddQuestion from './addQuestion';
 import {connect} from 'react-redux';
 import {getQuestions} from '../../redux/store';
 import Details from './details';
+import emptyList from '../../assets/empty-forum.png';
 
 const cluster =  ["Machine Learning", "Web Development","App Development" ];
 
@@ -43,11 +44,16 @@ class QuestionPage extends Component {
 
     render() {
         const {questions} = this.props;
-        let jsx = "No questions posted.."
+        let jsx = (
+            <div>
+                <img src={emptyList} className="question_image"/>
+                <h6 className="text-center aid_text">No Questions posted yet...</h6>
+            </div>
+        )
         if(questions.length === 0) {
             console.log("Wait for data....");
         } else {
-            console.log("Recieved data", questions);
+            //console.log("Recieved data", questions);
             let data = questions[this.state.channel];
             if(questions[this.state.channel]) {
                 jsx = Object.keys(data).map(key => {

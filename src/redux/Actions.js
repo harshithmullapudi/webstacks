@@ -9,7 +9,9 @@ export const actions = {
     SUBMIT_TEST  : 'update git',
     ADD_QUESTION: 'add question',
     GET_QUESTIONS: 'get questions',
-    ADD_REPLY: 'add reply'
+    ADD_REPLY: 'add reply',
+    GET_TASKS: 'get task',
+    SUBMIT_TASK: 'submit task'
 }
 
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FormElement from '../FormElement';
 import {login} from '../../../redux/store'
 import * as firebase from "../../../firebase";
+import {connect} from 'react-redux';
 import './login.css'
 
 class LoginView extends Component {
@@ -16,7 +17,7 @@ class LoginView extends Component {
         }
 
         this.onSubmit = (e) => {
-            login(this.state.fields.email, this.state.fields.password)
+            this.props.login(this.state.fields.email, this.state.fields.password)
         }
         this.onChange = (id, field, val) => {
             this.state.fields[field] = val;
@@ -46,4 +47,4 @@ class LoginView extends Component {
         )
     }
 }
-export default LoginView;
+export default connect(null,{login})(LoginView);

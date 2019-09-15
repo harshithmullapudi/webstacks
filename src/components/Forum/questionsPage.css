@@ -19,3 +19,13 @@
 .question-card {
     margin-top: 10px !important;
 }
+
+.question_image {
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+}
+
+.aid_text {
+    margin: 0 !important;
+}

@@ -39,6 +39,13 @@ h2 {
     font-weight: bold;
 }
 
+
+.no_task_wrapper img {
+    width: 40%;
+    display: block;
+    margin: 20px auto;
+}
+
 /* --------------------------------
 
 Modules - reusable parts of our design

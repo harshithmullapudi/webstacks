@@ -69,7 +69,7 @@ class ListRecord extends React.Component {
                             </div>
                             <CardBody>
                                 <CardTitle
-                                    className='cardTitle'><b>{i + 1}</b>. {this.props.records[i]["name"]["first"]} <span className='teamId'> ( Team ID : {this.props.records[i]["teamId"]} ) </span></CardTitle>
+                                    className='cardTitle'><b>{i + 1}</b>. {this.props.records[i]["name"]["first"]}</CardTitle>
                                 {i === 0 ? <div className='text-center'><img alt='medal' src={goldMedal} width='40'/></div> : ''}
                                 {i === 1 ? <div className='text-center'><img alt='medal' src={silverMedal} width='40'/></div> : ''}
                                 {i === 2 ? <div className='text-center'><img alt='medal' src={bronzeMedal} width='40'/></div> : ''}
@@ -94,7 +94,7 @@ class ListRecord extends React.Component {
                           <img src={this.props.records[i]["photo"]["type"] === 'boys' ? boys[this.props.records[i]["photo"]["number"] + '.svg'] : girls[this.props.records[i]["photo"]["number"] + '.svg']} height="80px" class="rounded-circle align-self-start mr-3" />
                         </Col>
                         <Col className="list-text">
-                          <h5>{i+1}. {this.props.records[i]["name"]["first"]}</h5> ( Team ID : {this.props.records[i]["teamId"]} )
+                          <h5>{i+1}. {this.props.records[i]["name"]["first"]}</h5>
                         </Col>
                         <Col className="list-text">
                           <h5 className="list-text">{this.props.records[i]["points"]}</h5>
@@ -190,8 +190,6 @@ class ListRecord extends React.Component {
                             </Row>
                         </Container>
                         <Container>
-
-                            <h5><b> Team Id</b> : {this.state.person["teamId"]}</h5>
                             <h5><b> Year of Study</b> : {this.state.person["year"]}</h5>
                             <h5> <b> About </b>: {this.state.person["about"]}</h5>
 
@@ -210,7 +208,8 @@ class ListRecord extends React.Component {
 }
 
 const mapStateToProps = state => ({
-        records: state.records
+        records: state.records,
+        user: state.user
 })
 
 export default connect(mapStateToProps, {getRecordsThunk})(ListRecord);

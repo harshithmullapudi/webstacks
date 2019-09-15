@@ -1,4 +1,8 @@
 .replycard {
-    width: 80% !important;
-
+    width: 95% !important;
+    background-color: #e9e9e9;
+    margin: 0 0 0 auto !important;
+    padding: 5px;
+    padding-left: 2vw;
+    border-bottom-style: 1px dashed black;
 }

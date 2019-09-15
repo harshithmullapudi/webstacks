@@ -6,14 +6,19 @@ import Select from 'react-select';
 import * as firebase from "../../../firebase";
 import {connect} from 'react-redux';
 
-const options = [
-    { value: 'male', label: 'male' },
-    { value: 'female', label: 'female'}
+const options1 = [
+    { value: 'Male', label: 'Male' },
+    { value: 'Female', label: 'Female'}
         ]
+const options2 = [
+    { value: 'Web Development', label: 'Web'},
+    { value: 'Machine Learning', label: 'ML'},
+    { value: 'App Development', label: 'App'}
+]
 
 class AddView extends Component {
     constructor(props) {
-        super();
+        super(props);
         this.state = {
             fields: {
                 firstName: "",
@@ -25,13 +30,14 @@ class AddView extends Component {
                 socialGithub: '',
                 socialLinkedin : '',
                 password: '',
-                gender :   { value: 'male', label: 'male' }
+                gender :   { value: 'male', label: 'male' },
+                cluster: { value: 'Web Development', label: 'Web'}
             },
             btnState: false
         }
         this.onSubmit = (e) => {
             let photo = {};
-            if(this.state.fields.gender.value === 'male')
+            if(this.state.fields.gender.value === 'Male')
             {
                 photo["type"] = "boys";
 
@@ -54,6 +60,8 @@ class AddView extends Component {
                 email: this.state.fields.email,
                 phone: this.state.fields.phone,
                 password: this.state.fields.password,
+                cluster: this.state.fields.cluster.value,
+                points: 0,  
                 photo
             }
             this.props.signup(data);
@@ -63,8 +71,11 @@ class AddView extends Component {
            let state  = (this.state.fields.firstName !== '' && this.state.fields.lastName !== '' && this.state.fields.about !== '' && this.state.fields.email !== '' && this.state.fields.phone !== 0 && this.state.fields.socialGithub !== '' && this.state.fields.socialLinkedin !== ''  && this.state.fields.gender !== '')
         this.setState({"btnState" : state});
         }
-        this.handleChange = (selectedOption) => {
+        this.handleGenderChange = (selectedOption) => {
             this.state.fields["gender"] = selectedOption
+        }
+        this.handleChange = (selectedOption) => {
+            this.state.fields["cluster"] = selectedOption;
         }
     }
 
@@ -90,9 +101,13 @@ class AddView extends Component {
                 <FormElement name="socialLinkedin" inputType="text" fullName="Linkedin Profile Link" action={this.onChange} />
                 <label> Gender </label>
                 <Select
-
+                    onChange={this.handleGenderChange}
+                    options={options1}
+                />
+                <label>Cluster</label>
+                <Select
                     onChange={this.handleChange}
-                    options={options}
+                    options={options2}
                 />
                 <FormElement name="password" inputType="password" fullName="Password" action={this.onChange} />
                 {this.state.btnState ? <button className="btn btn-outline-success" onClick={this.onSubmit}>Add Record</button> : ''}

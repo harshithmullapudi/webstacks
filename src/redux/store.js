@@ -26,6 +26,8 @@ const {
     NULL_USERDATA,
     SUBMIT_TEST, 
     ADD_REPLY,
+    GET_TASKS,
+    SUBMIT_TASK,
     SET_QUESTON, 
     GET_CHAT
 } = actions;
@@ -58,7 +60,10 @@ export const checkUser = () => dispatch => {
 // Thunk to get  User data for leaderboard 
 
 export const getRecordsThunk = () => async (dispatch) => {
-    let snapshot = await database.ref('data').orderByChild('points').once('value');
+    let clusters = {"Web Development": 0, "Machine Learning": 1, "App Development":3};
+    let cluster = store.getState().user.cluster;
+    
+    let snapshot = await database.ref('data').orderByChild('cluster').equalTo(cluster).once('value');
     let values = Object.keys(snapshot.val()).map(key => {
         if(snapshot.val()[key]) {
             let temp = snapshot.val()[key];
@@ -118,16 +123,51 @@ export const addReply = (data) => async (dispatch) => {
 }
 // Forum part ends here
 
+// Tasks Part 
 
+export const getTask = () => async (dispatch) => {
+    let snap = await database.ref('tasks').once('value');
+    let data = await snap.val();
+    if(data === null) {
+        data = []
+    }
+    dispatch({
+        type: GET_TASKS,
+        tasks: data
+    });
+}
+
+export const submitTask = data => async (dispatch) => {
+    await database.ref(`/submissions/${data.taskId}/${data.id}`).set(data);
+    notify.show("Your submission has been recorded!", "success");
+    dispatch({
+        type: SUBMIT_TASK
+    })
+}
+
+// Task over
 
 // User authentication 
 
-export function login(email, password) {
-    auth.signInWithEmailAndPassword(email, password).then(result => {
+export const login =  (email, password) => async dispatch => {
+    await auth.signInWithEmailAndPassword(email, password).then(async result => {
         notify.show("Successfully Logged In ", "success")
+        let user = await auth.currentUser;
+        let userData = await database.ref('data').orderByChild("email").equalTo(user.email).once('value');
+        let userDetails = Object.keys(userData.val()).map(k => {
+            let temp = userData.val()[k];
+            temp['key'] = k;
+            return temp;
+        })[0]   
+        dispatch({
+            type: GET_USER,
+            user: userDetails
+        });
     }).catch(function(error) {
      notify.show(error.message, "error")
-    })
+     return;
+    });
+    
 }
 
 export const signup = (data) => async (dispatch) => {
@@ -153,16 +193,6 @@ export function signOut() {
     });
 }
 
-export function submitTestUrl(link) {
-    return dispatch => {
-        dispatch(
-           {
-                type: SUBMIT_TEST,
-                link
-            }
-        )
-    }
-}
 
 
 function upUser(obj, key) {
@@ -182,10 +212,11 @@ function submit_response(user){
 /**
  * REDUCER
  */
-function Reducer (state = { records : [], questions : [], user : null, question : null }, action) {
+function Reducer (state = { records : [], questions : [], user : null, question : null, tasks: [] }, action) {
   switch (action.type) {
     case GET_USER:
-          return { 'user' : action.user,"records" : state.records, "questions" : state.questions, "question" : state.question};
+        console.log(action);
+          return {...state, user: action.user };
     case GET_RECORDS:
       return { 'records' : action.records, "user" : state.user,  "questions" : state.questions , "question" : state.question};
     case UPDATE_USER:
@@ -195,16 +226,7 @@ function Reducer (state = { records : [], questions : [], user : null, question 
          return {'records' : state.records, 'user' : action.user,  "questions" : state.questions , "question" : state.question};
      case NULL_USERDATA:
          return {'records' : state.records, 'user' : null,  "questions" : state.questions , "question" : state.question};
-     case SUBMIT_TEST:
-         if(!state.user.answer)
-         {
-             state.user["answer"] = [];
-         }
-         state.user["answer"].push({
-             'task' : 2,
-             'link' : action.link
-         })
-         submit_response(state.user);
+     case SUBMIT_TASK:
          return state;
     case ADD_QUESTION:
         return {...state,
@@ -232,7 +254,12 @@ function Reducer (state = { records : [], questions : [], user : null, question 
                      }
                  }
              }
-         }}
+         }
+        }
+    case GET_TASKS:
+        return {
+            ...state, tasks: action.tasks
+        }
     default:
       return state
   }

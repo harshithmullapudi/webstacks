@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import logo from './assets/logo.png';
 import './App.css';
 import { Router } from 'react-router-dom';
 import {
-    Navbar,
-    Nav,
-    NavItem,
+    Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink
 } from 'reactstrap';
 import * as firebase from './firebase';
 import {Link} from 'react-router-dom'
@@ -20,7 +18,13 @@ class App extends Component {
 
         this.state = {
             authUser: null,
+            isOpen: false
         };
+        this.toggle = () => {
+            this.setState({
+              isOpen: !this.state.isOpen
+            });
+        }
     }
 
     componentDidMount() {
@@ -38,19 +42,26 @@ class App extends Component {
             <main>
                 <Notifications/>
                 <Navbar color="light" light expand="md">
-                        <Link class='navbar-brand' href="/" to="/" > <img src={logo}  width="200" height="auto" alt=""/></Link>
-                    <Nav className="ml-auto" navbar>
-                        <NavItem >
-                            <Link class="nav-link" to='/leaderboard'>Leaderboard</Link>
-                        </NavItem>
-                        <NavItem >
-                            <Link class="nav-link" to='/tasks'>Tasks</Link>
-                        </NavItem>
+                <Link class='navbar-brand' href="/" to="/" > <img src={logo}  width="200" height="auto" alt=""/></Link>
+                    <NavbarToggler onClick={this.toggle} className="toggle-btn"/>
+                    <Collapse isOpen={this.state.isOpen} navbar className="text-center">
+                        <Nav className="ml-auto" navbar>
+                        {this.state.authUser && <Fragment>
+                            <NavItem >
+                                <Link class="nav-link" to='/leaderboard'>Leaderboard</Link>
+                            </NavItem>
+                            <NavItem >
+                                <Link class="nav-link" to='/tasks'>Tasks</Link>
+                            </NavItem>
+                            <NavItem> <Link class="nav-link" to='/profile'>Profile</Link></NavItem> 
+                            <NavItem> <Link to='/forum' class="nav-link">Forum</Link></NavItem>
+                            <NavItem> <Link to='/' class="nav-link" onClick={signOut}> Log out</Link></NavItem>
+                        </Fragment>
+                        }
                         { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/login'>Login</Link> </NavItem>  : ''}
                         { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/add'>Register</Link></NavItem> : ''}
-                        { this.state.authUser ?  <NavItem> <Link class="nav-link" to='/profile'>Profile</Link></NavItem> : ''}
-                        { this.state.authUser ?  <NavItem> <Link to='/' class="nav-link" onClick={signOut}> Log out</Link></NavItem> : ''}
-                    </Nav>
+                        </Nav>
+                    </Collapse>
                 </Navbar>
                     <div className="card main">
                         <Routes />

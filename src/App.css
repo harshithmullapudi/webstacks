@@ -7,6 +7,11 @@
 
 }
 
+body {
+    font-family: 'gotham_mediumregular', sans-serif !important;
+}
+
+
 .body {
     font-family: 'gotham_mediumregular', sans-serif !important;
 }
@@ -33,4 +38,9 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+}
+
+.toggle-btn {
+    border: 0 !important;
+    outline: 0 !important;
 }
