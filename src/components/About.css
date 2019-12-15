@@ -1,0 +1,40 @@
+
+.about{
+	display: flex;
+    justify-content:space-between;
+	margin-left:10px;
+	margin-right:50px;
+	margin-top: 20px;
+
+}
+
+#aboutimg{
+	max-width:690px;
+    margin-left:20px;
+    border-radius: 7%;
+
+}
+
+#p2{
+	padding-left: 150px;
+}
+#aboutimg1{
+
+	max-width:690px;
+    margin-left:20px;
+	border-radius: 7%;
+
+}
+.about-text{
+	font-family: Helvetica;
+	 padding-left: 20px;
+	font-size:30px;
+	font-weight: bold;
+	border-radius:8px;
+	margin-left: 20px;
+	margin-right:20px;
+	margin-top:10px;
+}
+#p1{
+	padding-left: 440px;
+}
