@@ -15,6 +15,7 @@ import store, {checkUser, history, watchTaskChangedEvent} from "./store";
 import AddView from "./components/addPeople";
 import Tasks from "./components/task";
 import LoginView from "./components/login";
+import UpdateView from "./components/Updates"
 import Notifications from 'react-notify-toast';
 import {signOut} from './store'
 import ProfileView from "./components/afterLogin/profileView";
@@ -56,6 +57,7 @@ class App extends Component {
                         </NavItem>
                         { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/login'>Login</Link> </NavItem>  : ''}
                         { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/add'>Register</Link></NavItem> : ''}
+                        { !this.state.authUser ?  <NavItem> <Link class="nav-link" to='/updates'>Updates</Link></NavItem> : ''}
                         { this.state.authUser ?  <NavItem> <Link class="nav-link" to='/profile'>Profile</Link></NavItem> : ''}
                         { this.state.authUser ?  <NavItem> <Link to='/' class="nav-link" onClick={signOut}> Log out</Link></NavItem> : ''}
                     </Nav>
@@ -65,6 +67,7 @@ class App extends Component {
                         <Route exact path="/add" component={AddView} />
                         <Route exact path="/tasks" component={Tasks} />
                         <Route exact path="/login" component={LoginView} />
+                        <Route exact path="/updates" component={UpdateView} />
                         <Route exact path="/profile" component={ProfileView} />
                         <Route exact path="/leaderboard" component={ListView} />
                     </div>
